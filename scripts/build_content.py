@@ -93,8 +93,26 @@ def page_kind(item: dict, child_count: int, district_hub_ids: set[int]) -> str:
 
 
 def main():
-    manifest = json.loads((ARCHIVE / "site-manifest.json").read_text())
-    media_catalog = json.loads((ARCHIVE / "media-ready/catalog.json").read_text())
+    manifest_path = ARCHIVE / "site-manifest.json"
+    media_catalog_path = ARCHIVE / "media-ready/catalog.json"
+
+    # The original WordPress export is kept outside this deployable project.
+    # Cloud builds should use the generated content already committed to the
+    # repository instead of failing because that source archive is unavailable.
+    if not manifest_path.exists() or not media_catalog_path.exists():
+        generated_pages = list(PAGE_OUT.glob("*.json")) if PAGE_OUT.exists() else []
+        if OUT.exists() and generated_pages:
+            print(
+                "Source content archive is unavailable; "
+                f"using committed content payload with {len(generated_pages)} pages"
+            )
+            return
+        raise FileNotFoundError(
+            "The source content archive and committed generated content are both missing."
+        )
+
+    manifest = json.loads(manifest_path.read_text())
+    media_catalog = json.loads(media_catalog_path.read_text())
     external_map = {
         record["source_url"]: record["local_file"]
         for record in media_catalog
