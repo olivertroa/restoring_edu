@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import usaStatesMap from "@svg-maps/usa.states-territories";
 import {
   ArrowRight,
   BookOpenText,
@@ -242,10 +243,80 @@ function Footer() {
   );
 }
 
+const mapStateNameAliases = {
+  "Washington, DC": "District of Columbia",
+};
+
+const gradeLabels = {
+  A: "Strongest education freedom",
+  B: "Broad education options",
+  C: "Mixed education options",
+  D: "Limited education options",
+  F: "Few education options",
+};
+
+function StateGradesMap({ states }) {
+  const navigate = useNavigate();
+  const [activeState, setActiveState] = useState(null);
+  const statesByName = useMemo(() => new Map(states.map((state) => [state.title, state])), [states]);
+  const mapLocations = useMemo(() => usaStatesMap.locations.map((location) => {
+    const contentName = mapStateNameAliases[location.name] || location.name;
+    return { ...location, state: statesByName.get(contentName) };
+  }).filter((location) => location.state), [statesByName]);
+
+  function followState(event, route) {
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    navigate(route);
+  }
+
+  return (
+    <div className="grade-map-layout">
+      <div className="grade-map-panel">
+        <svg className="grade-map" viewBox={usaStatesMap.viewBox} role="group" aria-label="Interactive map of state education grades">
+          {mapLocations.map((location) => {
+            const state = location.state;
+            const grade = state.grade?.charAt(0).toUpperCase();
+            return (
+              <a
+                key={location.id}
+                href={state.route}
+                aria-label={`${state.title}, grade ${state.grade}`}
+                onClick={(event) => followState(event, state.route)}
+                onMouseEnter={() => setActiveState(state)}
+                onMouseLeave={() => setActiveState(null)}
+                onFocus={() => setActiveState(state)}
+                onBlur={() => setActiveState(null)}
+              >
+                <path className={`grade-map-state grade-map-grade-${grade?.toLowerCase()}`} d={location.path}>
+                  <title>{state.title}: Grade {state.grade}</title>
+                </path>
+              </a>
+            );
+          })}
+        </svg>
+      </div>
+      <aside className="grade-map-guide" aria-live="polite">
+        <div className="grade-map-current">
+          <span>{activeState ? "Selected state" : "Explore the map"}</span>
+          <strong>{activeState?.title || "Choose a state"}</strong>
+          <p>{activeState ? `Grade ${activeState.grade}. Click to view the full state report.` : "Hover, focus, or tap a state to see its grade and open its report."}</p>
+        </div>
+        <div className="grade-map-legend" aria-label="State grade color key">
+          {Object.entries(gradeLabels).map(([grade, label]) => (
+            <div key={grade}>
+              <strong className={`grade grade-${grade.toLowerCase()}`}>{grade}</strong>
+              <span>{label}</span>
+            </div>
+          ))}
+        </div>
+      </aside>
+    </div>
+  );
+}
+
 function HomePage() {
   const states = content.pages.filter((page) => page.kind === "state" && page.grade).sort((a, b) => a.title.localeCompare(b.title));
-  const [stateQuery, setStateQuery] = useState("");
-  const filteredStates = states.filter((state) => state.title.toLowerCase().includes(stateQuery.toLowerCase()));
 
   return (
     <>
@@ -284,29 +355,12 @@ function HomePage() {
         <div className="shell">
           <div className="section-heading compact-heading">
             <h2>What grade did your state receive?</h2>
-            <p>Compare education freedom, family options, and state policy across the country.</p>
+            <p>Select any state to compare education freedom, family options, and state policy across the country.</p>
             <Link className="primary-button" to="/grading-system/">
               View the grading system <ArrowRight size={18} />
             </Link>
           </div>
-          <div className="finder-wrap">
-            <label htmlFor="state-filter">Filter by state name</label>
-            <div className="finder-control">
-              <MagnifyingGlass size={22} />
-              <input id="state-filter" value={stateQuery} onChange={(event) => setStateQuery(event.target.value)} placeholder="Start typing a state" />
-              <span>{filteredStates.length} results</span>
-            </div>
-          </div>
-          <div className="state-grid">
-            {filteredStates.map((state) => (
-              <Link className="state-row" key={state.id} to={state.route}>
-                <span>{state.title}</span>
-                <strong className={`grade grade-${state.grade?.charAt(0).toLowerCase()}`}>{state.grade}</strong>
-                <ArrowRight size={20} />
-              </Link>
-            ))}
-            {filteredStates.length === 0 && <p className="no-results">No states match that search.</p>}
-          </div>
+          <StateGradesMap states={states} />
         </div>
       </section>
 
