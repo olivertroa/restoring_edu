@@ -563,13 +563,16 @@ function DistrictWatchPage({ page }) {
           </div>
         </div>
       </section>
-      <section className="hub-grid shell section-space">
-        {hubs.map((hub) => (
-          <Link key={hub.id} to={hub.route} className="hub-card">
-            <div className="hub-state-badge" aria-hidden="true"><small>State</small><strong>{hub.code}</strong></div>
-            <div className="hub-card-copy"><h2>{hub.name}</h2><span>{hub.districts.length} districts, {hub.people} people <ArrowRight size={17} /></span></div>
-          </Link>
-        ))}
+      <section className="hub-section shell section-space" aria-labelledby="state-directory-heading">
+        <h2 id="state-directory-heading">Click on your state to see the WORST school board members and superintendents.</h2>
+        <div className="hub-grid">
+          {hubs.map((hub) => (
+            <Link key={hub.id} to={hub.route} className="hub-card">
+              <div className="hub-state-badge" aria-hidden="true"><small>State</small><strong>{hub.code}</strong></div>
+              <div className="hub-card-copy"><h2>{hub.name}</h2><span>{hub.districts.length} districts, {hub.people} people <ArrowRight size={17} /></span></div>
+            </Link>
+          ))}
+        </div>
       </section>
       <section className="tip-band shell"><div><h2>Have a tip?</h2><p>Share information about local school leadership or district policy.</p></div><Link className="primary-button" to="/district-watch/got-a-tip/">Report a tip <ArrowRight size={18} /></Link></section>
     </>
