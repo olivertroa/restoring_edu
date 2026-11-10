@@ -255,6 +255,10 @@ const gradeLabels = {
   F: "Few education options",
 };
 
+const gradedStates = content.pages
+  .filter((page) => page.kind === "state" && page.grade)
+  .sort((a, b) => a.title.localeCompare(b.title));
+
 function StateGradesMap({ states }) {
   const navigate = useNavigate();
   const [activeState, setActiveState] = useState(null);
@@ -316,7 +320,7 @@ function StateGradesMap({ states }) {
 }
 
 function HomePage() {
-  const states = content.pages.filter((page) => page.kind === "state" && page.grade).sort((a, b) => a.title.localeCompare(b.title));
+  const states = gradedStates;
 
   return (
     <>
@@ -629,7 +633,18 @@ function StandardPage({ page }) {
         {portrait && <img src={portrait} alt={page.images[0].alt || page.title} />}
       </section>
       {children.length > 0 && <section className="child-links shell">{children.map((child) => <Link key={child.id} to={child.route}>{child.title}<ArrowRight size={18} /></Link>)}</section>}
-      <main className="content-shell shell"><MarkdownBody page={page} stripFirstImage={grading} /></main>
+      <main className="content-shell shell">
+        <MarkdownBody page={page} stripFirstImage={grading} />
+        {grading && (
+          <section className="grading-map-section" aria-labelledby="grading-map-title">
+            <div className="grading-map-heading">
+              <h2 id="grading-map-title">Explore state grades</h2>
+              <p>Select a state to open its full education freedom report.</p>
+            </div>
+            <StateGradesMap states={gradedStates} />
+          </section>
+        )}
+      </main>
     </>
   );
 }

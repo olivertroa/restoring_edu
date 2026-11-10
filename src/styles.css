@@ -225,6 +225,11 @@ img { display: block; max-width: 100%; }
 .state-watch-link:hover { background: color-mix(in srgb, var(--accent) 20%, var(--surface)); }
 
 .content-shell { padding-top: 28px; padding-bottom: clamp(110px, 13vw, 190px); }
+.grading-map-section { margin-top: clamp(78px, 10vw, 132px); padding-top: clamp(54px, 7vw, 88px); border-top: 1px solid var(--line); }
+.grading-map-heading { max-width: 760px; }
+.grading-map-heading h2 { margin: 0; font-size: clamp(43px, 6vw, 82px); line-height: .98; letter-spacing: -.065em; font-weight: 500; }
+.grading-map-heading p { max-width: 48ch; margin: 22px 0 0; color: var(--muted); font-size: 19px; }
+.grading-map-section .grade-map-layout { margin-top: clamp(42px, 6vw, 70px); }
 .content-with-aside { display: grid; grid-template-columns: minmax(0, 850px) 260px; justify-content: space-between; gap: 80px; }
 .sticky-aside { position: sticky; top: 112px; height: max-content; display: flex; flex-direction: column; gap: 13px; padding: 22px; border-radius: var(--radius); background: var(--surface); }
 .sticky-aside strong { margin-bottom: 6px; }
@@ -530,6 +535,7 @@ img { display: block; max-width: 100%; }
   .grade-orb strong { font-size: 105px; }
   .prose { font-size: 16px; }
   .prose img { margin-block: 30px; }
+  .grading-map-heading p { font-size: 16px; }
   .child-links { grid-template-columns: 1fr; }
   .directory-grid, .hub-grid { display: grid; grid-template-columns: 1fr; }
   .directory-card, .directory-card:nth-child(5n + 1), .directory-card:nth-child(5n + 2) { grid-column: auto; min-height: 400px; }
