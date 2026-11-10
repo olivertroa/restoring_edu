@@ -154,7 +154,7 @@ function Header() {
       <header className="site-header">
         <div className="shell nav-shell">
           <Link className="wordmark" to="/" aria-label="Restoring Education home">
-            Restoring<span>EDU</span><i />
+            <img src="/media/brand/restoring-edu-logo-navy.png" alt="" />
           </Link>
           <nav className="desktop-nav" aria-label="Primary navigation">
             {headerNavItems.map(([label, href]) => (
@@ -222,7 +222,9 @@ function Footer() {
     <footer className="site-footer">
       <div className="shell footer-grid">
         <div>
-          <Link className="wordmark footer-mark" to="/">Restoring<span>EDU</span><i /></Link>
+          <Link className="wordmark footer-mark" to="/" aria-label="Restoring Education home">
+            <img src="/media/brand/restoring-edu-logo-white.png" alt="" />
+          </Link>
           <p>Research that helps parents understand education choices, state policy, and local school leadership.</p>
         </div>
         <div className="footer-links">
