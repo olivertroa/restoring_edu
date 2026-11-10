@@ -331,7 +331,7 @@ img { display: block; max-width: 100%; }
 .hub-card:hover, .hub-card:focus-visible { background: #20386f; transform: translateY(-5px); }
 .hub-card:hover .hub-state-badge, .hub-card:focus-visible .hub-state-badge { transform: scale(1.06) rotate(3deg); }
 .hub-card:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
-.tip-band { display: flex; align-items: center; justify-content: space-between; gap: 40px; margin-top: 22px; margin-bottom: clamp(110px, 13vw, 190px); padding: clamp(34px, 5vw, 68px); border-radius: var(--radius-large); background: var(--accent); color: var(--accent-ink); }
+.tip-band { display: flex; align-items: center; justify-content: space-between; gap: 40px; margin-top: clamp(64px, 8vw, 110px); margin-bottom: clamp(110px, 13vw, 190px); padding: clamp(34px, 5vw, 68px); border-radius: var(--radius-large); background: var(--accent); color: var(--accent-ink); }
 .tip-band h2 { margin: 0; font-size: clamp(40px, 5vw, 66px); line-height: 1; letter-spacing: -.05em; font-weight: 550; }
 .tip-band p { margin: 12px 0 0; }
 
