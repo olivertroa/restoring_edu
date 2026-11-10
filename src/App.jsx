@@ -336,16 +336,20 @@ function HomePage() {
         <div className="hero-panels reveal-late" aria-label="Education research highlights">
           <Link className="hero-panel hero-panel-main" to="/grading-system/">
             <img src="/media/generated/design-1-education-hero.png" alt="Parents and students reviewing education materials together" />
-            <span>State<br />Grades</span><em>Learn more <ArrowRight size={16} weight="bold" /></em>
+            <span>State<br />Grades</span>
+            <p className="hero-panel-excerpt">See how each state measures up on school choice, student funding, and homeschooling freedom.</p>
+            <em>Learn more <ArrowRight size={16} weight="bold" /></em>
           </Link>
           <Link className="hero-panel hero-panel-side" to="/district-watch/">
             <img src="/media/uploads/2025/05/Restoring-Edu-Classroom.png" alt="An apple and books in a classroom" />
             <span>District<br />Watch</span>
+            <p className="hero-panel-excerpt">Explore research on the school board members and leaders shaping policies in local classrooms.</p>
             <em>Learn more <ArrowRight size={16} weight="bold" /></em>
           </Link>
           <Link className="hero-panel hero-panel-side" to="/news/">
             <img src="/media/uploads/2025/09/BBall-Court.jpg" alt="An urban basketball court" />
             <span>Latest<br />News</span>
+            <p className="hero-panel-excerpt">Read the latest reporting and analysis about education freedom across America.</p>
             <em>Learn more <ArrowRight size={16} weight="bold" /></em>
           </Link>
         </div>
