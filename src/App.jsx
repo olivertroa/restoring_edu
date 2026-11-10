@@ -553,7 +553,15 @@ function DistrictWatchPage({ page }) {
   return (
     <>
       <section className="watch-landing-hero shell">
-        <div><span className="eyebrow">District Watch</span><h1>Local records.<br />Clear choices.</h1><p>Explore the people and policies shaping public education in selected school districts.</p></div>
+        <div>
+          <span className="eyebrow">District Watch</span>
+          <h1>Local records.<br />Clear choices.</h1>
+          <div className="watch-hero-intro">
+            <p><strong>This is District Watch, our project to expose the worst school board members and school leaders focused on indoctrinating children rather than educating them. We’re naming names because we believe in restoring America’s schools—not surrendering them.</strong></p>
+            <h2>But we need your help.</h2>
+            <p><strong>Whether it’s dropping a <Link to="/district-watch/got-a-tip/">tip</Link> or <a href="https://restorationaction.revv.co/donate-now" target="_blank" rel="noreferrer">funding our work,</a> we can’t win the war alone. District Watch is a project of <a href="https://restoration-news.com/" target="_blank" rel="noreferrer">Restoration News</a>, your source for exclusive, headline-smashing news and opinion.</strong></p>
+          </div>
+        </div>
       </section>
       <section className="hub-grid shell section-space">
         {hubs.map((hub) => (
