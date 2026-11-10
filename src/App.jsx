@@ -393,7 +393,7 @@ function HomePage() {
 
       <section className="watch-feature section-space shell">
         <div className="watch-image">
-          <img src="/media/generated/design-1-us-states-white.png" alt="Map of the United States with state boundaries" />
+          <img src="/media/generated/design-1-classroom-teacher.jpg" alt="A teacher leading a classroom lesson while students work at their desks" />
         </div>
         <div className="watch-copy">
           <span className="eyebrow">District Watch</span>
