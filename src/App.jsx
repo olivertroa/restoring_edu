@@ -557,9 +557,11 @@ function DistrictWatchPage({ page }) {
           <span className="eyebrow">District Watch</span>
           <h1>Local records.<br />Clear choices.</h1>
           <div className="watch-hero-intro">
-            <p><strong>This is District Watch, our project to expose the worst school board members and school leaders focused on indoctrinating children rather than educating them. We’re naming names because we believe in restoring America’s schools—not surrendering them.</strong></p>
-            <h2>But we need your help.</h2>
-            <p><strong>Whether it’s dropping a <Link to="/district-watch/got-a-tip/">tip</Link> or <a href="https://restorationaction.revv.co/donate-now" target="_blank" rel="noreferrer">funding our work,</a> we can’t win the war alone. District Watch is a project of <a href="https://restoration-news.com/" target="_blank" rel="noreferrer">Restoration News</a>, your source for exclusive, headline-smashing news and opinion.</strong></p>
+            <p>This is District Watch, our project to expose the worst school board members and school leaders focused on indoctrinating children rather than educating them. We’re naming names because we believe in restoring America’s schools—not surrendering them.</p>
+            <div className="watch-hero-help">
+              <h2>But we need your help.</h2>
+              <p>Whether it’s dropping a <Link to="/district-watch/got-a-tip/">tip</Link> or <a href="https://restorationaction.revv.co/donate-now" target="_blank" rel="noreferrer">funding our work,</a> we can’t win the war alone. District Watch is a project of <a href="https://restoration-news.com/" target="_blank" rel="noreferrer">Restoration News</a>, your source for exclusive, headline-smashing news and opinion.</p>
+            </div>
           </div>
         </div>
       </section>
