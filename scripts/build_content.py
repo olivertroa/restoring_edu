@@ -22,6 +22,28 @@ DISTRICT_HUB_ROUTES = {
 }
 
 
+def frontmatter_from_markdown(path: Path) -> dict[str, str]:
+    text = path.read_text(errors="replace")
+    if not text.startswith("---"):
+        return {}
+    parts = text.split("---", 2)
+    if len(parts) != 3:
+        return {}
+    metadata = {}
+    for line in parts[1].splitlines():
+        if ":" not in line:
+            continue
+        key, value = line.split(":", 1)
+        value = value.strip()
+        if value.startswith('"') and value.endswith('"'):
+            try:
+                value = json.loads(value)
+            except json.JSONDecodeError:
+                value = value[1:-1]
+        metadata[key.strip()] = value
+    return metadata
+
+
 def body_from_markdown(path: Path) -> str:
     text = path.read_text(errors="replace")
     if text.startswith("---"):
@@ -130,7 +152,9 @@ def main():
     pages = []
     PAGE_OUT.mkdir(parents=True, exist_ok=True)
     for item in manifest["items"]:
-        md = body_from_markdown(ARCHIVE / item["content_file"])
+        markdown_path = ARCHIVE / item["content_file"]
+        metadata = frontmatter_from_markdown(markdown_path)
+        md = body_from_markdown(markdown_path)
         md = localize_markdown(md, external_map)
         grade_match = re.search(r"CURRENT GRADE:\s*([A-F][+-]?)", md, re.I)
         images = []
@@ -156,6 +180,10 @@ def main():
             "images": images,
             "modified": item.get("modified"),
         }
+        if metadata.get("profile_status"):
+            page["profileStatus"] = visible_text(metadata["profile_status"])
+        if metadata.get("profile_status_detail"):
+            page["profileStatusDetail"] = visible_text(metadata["profile_status_detail"])
         (PAGE_OUT / f"{item['wordpress_id']}.json").write_text(json.dumps(page, ensure_ascii=False))
         pages.append({key: value for key, value in page.items() if key != "body"})
 

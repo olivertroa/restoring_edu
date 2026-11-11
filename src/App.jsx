@@ -535,7 +535,17 @@ function DirectoryPage({ page }) {
             <section className="people-section shell section-space">
               <div className="directory-section-heading"><h2>Board members and employees.</h2><p>Open a profile to review the archived research, images, and original supporting links.</p></div>
               <div className="people-grid">
-                {people.map((person) => <Link key={person.id} to={person.route} className="person-card">{person.images[0] ? <img src={person.images[0].src} alt={person.images[0].alt || person.title} /> : <div className="person-placeholder"><UsersThree size={35} /></div>}<div><h3>{person.title}</h3>{person.description && <p>{clampWords(person.description, 16)}</p>}<span>View research <ArrowRight size={16} /></span></div></Link>)}
+                {people.map((person) => (
+                  <Link key={person.id} to={person.route} className="person-card">
+                    {person.images[0] ? <img src={person.images[0].src} alt={person.images[0].alt || person.title} /> : <div className="person-placeholder"><UsersThree size={35} /></div>}
+                    <div>
+                      {person.profileStatus && <strong className="person-status">{person.profileStatus}</strong>}
+                      <h3>{person.title}</h3>
+                      {person.description && <p>{clampWords(person.description, 16)}</p>}
+                      <span>View research <ArrowRight size={16} /></span>
+                    </div>
+                  </Link>
+                ))}
               </div>
             </section>
           )}
@@ -639,7 +649,18 @@ function StandardPage({ page }) {
   return (
     <>
       <section className={`page-hero shell ${grading ? "grading-hero" : ""} ${portrait && ["profile", "policy", "post"].includes(page.kind) ? "profile-hero" : ""} ${page.kind === "profile" ? "person-profile-hero" : ""}`}>
-        <div><DistrictBreadcrumb page={page} /><span className="page-type">{page.kind.replaceAll("-", " ")}</span><h1>{page.title}</h1>{page.description && <p>{clampWords(page.description, 20)}</p>}</div>
+        <div>
+          <DistrictBreadcrumb page={page} />
+          <span className="page-type">{page.kind.replaceAll("-", " ")}</span>
+          <h1>{page.title}</h1>
+          {page.description && <p>{clampWords(page.description, 20)}</p>}
+          {page.profileStatusDetail && (
+            <div className="profile-status-notice" role="note" aria-label="Profile status update">
+              <span>{page.profileStatus}</span>
+              <strong>{page.profileStatusDetail}</strong>
+            </div>
+          )}
+        </div>
         {grading && (
           <div className="grading-scale" aria-label="Grade scale: A, B, C, D, and F">
             {["A", "B", "C", "D", "F"].map((grade) => <strong className={`grade grade-${grade.toLowerCase()}`} key={grade}>{grade}</strong>)}

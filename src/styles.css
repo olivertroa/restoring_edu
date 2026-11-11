@@ -255,6 +255,9 @@ img { display: block; max-width: 100%; }
 
 .profile-hero { grid-template-columns: 1fr minmax(300px, 520px); }
 .profile-hero img, .directory-hero > img { width: 100%; height: min(62dvh, 620px); object-fit: cover; border-radius: var(--radius-large); background: var(--surface); }
+.profile-status-notice { max-width: 620px; display: grid; gap: 10px; margin-top: 30px; padding: 22px 24px; border-left: 5px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; background: var(--surface); }
+.profile-status-notice span { color: var(--accent-strong); font-size: 12px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.profile-status-notice strong { font-size: clamp(20px, 2vw, 27px); font-weight: 650; line-height: 1.2; letter-spacing: -.025em; }
 .directory-hero > img.district-logo { aspect-ratio: 1; height: auto; padding: clamp(24px, 4vw, 58px); object-fit: contain; }
 .page-hero.person-profile-hero img { aspect-ratio: 1; height: auto; object-fit: contain; object-position: center; }
 .child-links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 80px; }
@@ -307,6 +310,7 @@ img { display: block; max-width: 100%; }
 .person-card > img, .person-placeholder { width: 100%; height: auto; aspect-ratio: 1; object-fit: contain; object-position: center; background: var(--surface-strong); }
 .person-placeholder { display: grid; place-items: center; color: var(--muted); }
 .person-card > div:last-child { display: flex; flex: 1; flex-direction: column; padding: 24px; }
+.person-status { align-self: flex-start; margin-bottom: 16px; padding: 8px 12px; border-radius: 999px; color: #f8f8f3; background: var(--accent); font-size: 11px; font-weight: 800; line-height: 1; letter-spacing: .08em; text-transform: uppercase; }
 .person-card h3 { margin: 0; font-size: clamp(25px, 2.7vw, 38px); line-height: 1.02; letter-spacing: -.045em; font-weight: 550; }
 .person-card p { margin: 14px 0 0; color: var(--muted); font-size: 14px; }
 .person-card span { display: flex; align-items: center; gap: 8px; margin-top: auto; padding-top: 24px; color: var(--muted); font-size: 13px; font-weight: 750; }
