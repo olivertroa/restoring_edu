@@ -374,7 +374,7 @@ function HomePage() {
         <div className="hero-panels reveal-late" aria-label="Education research highlights">
           <Link className="hero-panel hero-panel-main" to="/grading-system/">
             <img src="/media/generated/design-1-education-hero.png" alt="Parents and students reviewing education materials together" />
-            <span>State<br />Grades</span>
+            <span>Education Freedom<br />State Scores</span>
             <p className="hero-panel-excerpt">See how each state measures up on school choice, student funding, and homeschooling freedom.</p>
             <em>Learn more <ArrowRight size={16} weight="bold" /></em>
           </Link>
