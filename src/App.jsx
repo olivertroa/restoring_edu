@@ -88,6 +88,12 @@ function clampWords(value, limit = 20) {
   return words.length > limit ? `${words.slice(0, limit).join(" ")}.` : words.join(" ");
 }
 
+function preventOrphan(value) {
+  const text = String(value || "").trim();
+  const lastSpace = text.lastIndexOf(" ");
+  return lastSpace > 0 ? `${text.slice(0, lastSpace)}\u00a0${text.slice(lastSpace + 1)}` : text;
+}
+
 function headingText(node) {
   if (typeof node === "string" || typeof node === "number") return String(node);
   if (Array.isArray(node)) return node.map(headingText).join("");
@@ -257,7 +263,7 @@ function Footer() {
           <Link className="wordmark footer-mark" to="/" aria-label="Restoring Education home">
             <img src="/media/brand/restoring-edu-logo-white.png?v=20261111" alt="" />
           </Link>
-          <p>Research that helps parents understand education choices, state policy, and local school leadership.</p>
+          <p>{preventOrphan("Research that helps parents understand education choices, state policy, and local school leadership.")}</p>
         </div>
         <div className="footer-links">
           <strong>Explore</strong>
@@ -265,7 +271,7 @@ function Footer() {
         </div>
         <div className="footer-contact">
           <strong>Accuracy matters</strong>
-          <p>For media inquiries and corrections:</p>
+          <p>{preventOrphan("For media inquiries and corrections:")}</p>
           <a href="mailto:tips@restorationpac.com">tips@restorationpac.com</a>
         </div>
       </div>
@@ -338,7 +344,7 @@ function StateGradesMap({ states }) {
         <div className="grade-map-current">
           <span>{activeState ? "Selected state" : "Explore the map"}</span>
           <strong>{activeState?.title || "Choose a state"}</strong>
-          <p>{activeState ? `Grade ${activeState.grade}. Click to view the full state report.` : "Hover, focus, or tap a state to see its grade and open its report."}</p>
+          <p>{preventOrphan(activeState ? `Grade ${activeState.grade}. Click to view the full state report.` : "Hover, focus, or tap a state to see its grade and open its report.")}</p>
         </div>
         <div className="grade-map-legend" aria-label="State grade color key">
           {Object.entries(gradeLabels).map(([grade, label]) => (
@@ -361,7 +367,7 @@ function HomePage() {
       <section className="hero shell">
         <div className="hero-copy reveal">
           <h1>Restore.<br />Education.</h1>
-          <p>See how your state protects education freedom and what choices are available to your family.</p>
+          <p>{preventOrphan("See how your state protects education freedom and what choices are available to your family.")}</p>
           <div className="state-jump">
             <label htmlFor="hero-state">Find your state</label>
             <select id="hero-state" defaultValue="" onChange={(event) => { if (event.target.value) window.location.href = event.target.value; }}>
@@ -375,20 +381,20 @@ function HomePage() {
           <Link className="hero-panel hero-panel-main" to="/grading-system/">
             <img src="/media/generated/design-1-education-hero.png" alt="Parents and students reviewing education materials together" />
             <span>Education Freedom<br />State Scores</span>
-            <p className="hero-panel-excerpt">See how each state measures up on school choice, student funding, and homeschooling freedom.</p>
-            <em>Learn more <ArrowRight size={16} weight="bold" /></em>
+            <p className="hero-panel-excerpt">{preventOrphan("See how each state measures up on school choice, student funding, and homeschooling freedom.")}</p>
+            <em>{preventOrphan("Learn more")} <ArrowRight size={16} weight="bold" /></em>
           </Link>
           <Link className="hero-panel hero-panel-side" to="/district-watch/">
             <img src="/media/uploads/2025/05/Restoring-Edu-Classroom.png" alt="An apple and books in a classroom" />
             <span>District<br />Watch</span>
-            <p className="hero-panel-excerpt">Explore research on the school board members and leaders shaping policies in local classrooms.</p>
-            <em>Learn more <ArrowRight size={16} weight="bold" /></em>
+            <p className="hero-panel-excerpt">{preventOrphan("Explore research on the school board members and leaders shaping policies in local classrooms.")}</p>
+            <em>{preventOrphan("Learn more")} <ArrowRight size={16} weight="bold" /></em>
           </Link>
           <Link className="hero-panel hero-panel-side" to="/news/">
             <img src="/media/uploads/2025/09/BBall-Court.jpg" alt="An urban basketball court" />
             <span>Latest<br />News</span>
-            <p className="hero-panel-excerpt">Read the latest reporting and analysis about education freedom across America.</p>
-            <em>Learn more <ArrowRight size={16} weight="bold" /></em>
+            <p className="hero-panel-excerpt">{preventOrphan("Read the latest reporting and analysis about education freedom across America.")}</p>
+            <em>{preventOrphan("Learn more")} <ArrowRight size={16} weight="bold" /></em>
           </Link>
         </div>
       </section>
@@ -397,9 +403,9 @@ function HomePage() {
         <div className="shell">
           <div className="section-heading compact-heading">
             <h2>What grade did your state receive?</h2>
-            <p>Select any state to compare education freedom, family options, and state policy across the country.</p>
+            <p>{preventOrphan("Select any state to compare education freedom, family options, and state policy across the country.")}</p>
             <Link className="primary-button" to="/grading-system/">
-              View the grading system <ArrowRight size={18} />
+              {preventOrphan("View the grading system")} <ArrowRight size={18} />
             </Link>
           </div>
           <StateGradesMap states={states} />
@@ -409,17 +415,17 @@ function HomePage() {
       <section className="measure-section section-space shell">
         <div className="measure-intro">
           <h2>Choice should follow the family.</h2>
-          <p>The grading system focuses on concrete freedoms available to parents, students, and educators.</p>
-          <Link className="text-link" to="/grading-system/">How grading works <ArrowRight size={18} /></Link>
+          <p>{preventOrphan("The grading system focuses on concrete freedoms available to parents, students, and educators.")}</p>
+          <Link className="text-link" to="/grading-system/">{preventOrphan("How grading works")} <ArrowRight size={18} /></Link>
         </div>
         <div className="measure-grid">
           <article className="measure-large">
             <BookOpenText size={38} weight="duotone" />
             <h3>Education options</h3>
-            <p>Choice programs, charter schools, scholarships, and alternative learning models.</p>
+            <p>{preventOrphan("Choice programs, charter schools, scholarships, and alternative learning models.")}</p>
           </article>
-          <article><strong>Funding</strong><p>Whether state education dollars can follow the student.</p></article>
-          <article><strong>Homeschooling</strong><p>Whether families can teach without unnecessary government interference.</p></article>
+          <article><strong>Funding</strong><p>{preventOrphan("Whether state education dollars can follow the student.")}</p></article>
+          <article><strong>Homeschooling</strong><p>{preventOrphan("Whether families can teach without unnecessary government interference.")}</p></article>
         </div>
       </section>
 
@@ -430,24 +436,24 @@ function HomePage() {
         <div className="watch-copy">
           <span className="eyebrow">District Watch</span>
           <h2>Know who shapes your local schools.</h2>
-          <p>Explore districts, board members, school leaders, policies, and the supporting source material.</p>
+          <p>{preventOrphan("Explore districts, board members, school leaders, policies, and the supporting source material.")}</p>
           <div className="watch-states">
             {districtWatchStates.map(({ name }) => <span key={name}><Check size={16} weight="bold" />{name}</span>)}
           </div>
-          <Link className="primary-button" to="/district-watch/">Explore districts <ArrowRight size={18} /></Link>
+          <Link className="primary-button" to="/district-watch/">{preventOrphan("Explore districts")} <ArrowRight size={18} /></Link>
         </div>
       </section>
 
       <section className="news-section section-space shell">
         <div className="section-heading compact-heading">
           <h2>The latest in education</h2>
-          <Link className="text-link" to="/news/">View all news <ArrowRight size={18} /></Link>
+          <Link className="text-link" to="/news/">{preventOrphan("View all news")} <ArrowRight size={18} /></Link>
         </div>
         <div className="news-layout">
           {newsStories.map((story, index) => (
             <a key={story.href} href={story.href} target="_blank" rel="noreferrer" className={index === 0 ? "story story-featured" : "story"}>
               <img src={story.image} alt="" />
-              <div><h3>{story.title}</h3><span>Read at Restoration News <ArrowRight size={16} /></span></div>
+              <div><h3>{preventOrphan(story.title)}</h3><span>{preventOrphan("Read at Restoration News")} <ArrowRight size={16} /></span></div>
             </a>
           ))}
         </div>
@@ -455,8 +461,8 @@ function HomePage() {
 
       <section className="closing-cta shell section-space">
         <div><Buildings size={46} weight="duotone" /><h2>Start with your community.</h2></div>
-        <p>Find your state grade, then explore the districts and decision-makers closest to home.</p>
-        <Link className="primary-button" to="/district-watch/">Explore districts <ArrowRight size={18} /></Link>
+        <p>{preventOrphan("Find your state grade, then explore the districts and decision-makers closest to home.")}</p>
+        <Link className="primary-button" to="/district-watch/">{preventOrphan("Explore districts")} <ArrowRight size={18} /></Link>
       </section>
     </>
   );
@@ -502,7 +508,7 @@ function StatePage({ page }) {
         <div>
           <Link className="back-link" to="/#state-grades">All state grades</Link>
           <h1>{page.title}</h1>
-          <p>{description}</p>
+          <p>{preventOrphan(description)}</p>
         </div>
         <div className={`grade-orb grade-${page.grade?.charAt(0).toLowerCase()}`}><small>Current grade</small><strong>{page.grade}</strong></div>
       </section>
@@ -537,7 +543,7 @@ function DirectoryPage({ page }) {
   return (
     <>
       <section className="directory-hero shell">
-        <div><DistrictBreadcrumb page={page} /><span className="eyebrow">District Watch</span>{state ? <h1 className={`state-directory-title state-title-${state.code.toLowerCase()}`}><span>{state.name}</span><span>Schools</span></h1> : <h1>{page.title}</h1>}<p>{clampWords(page.description || (state ? "Select a district to explore its leadership, employees, policies, and supporting sources." : "Review local school leadership, employees, policies, and supporting sources."), 20)}</p></div>
+        <div><DistrictBreadcrumb page={page} /><span className="eyebrow">District Watch</span>{state ? <h1 className={`state-directory-title state-title-${state.code.toLowerCase()}`}><span>{state.name}</span><span>Schools</span></h1> : <h1>{page.title}</h1>}<p>{preventOrphan(clampWords(page.description || (state ? "Select a district to explore its leadership, employees, policies, and supporting sources." : "Review local school leadership, employees, policies, and supporting sources."), 20))}</p></div>
         {state
           ? <div className="state-vector-art"><img src={image} alt={`${state.name} state outline`} /></div>
           : <img className="district-logo" src={image} alt={`${page.title} identity`} />}
@@ -547,10 +553,10 @@ function DirectoryPage({ page }) {
           <section className="directory-summary shell" aria-label={`${state.name} District Watch summary`}>
             <div><Buildings size={26} weight="duotone" /><strong>{districts.length}</strong><span>Districts</span></div>
             <div><UsersThree size={26} weight="duotone" /><strong>{totalPeople}</strong><span>People profiled</span></div>
-            <Link to="/district-watch/got-a-tip/">Report a tip <ArrowRight size={17} /></Link>
+            <Link to="/district-watch/got-a-tip/">{preventOrphan("Report a tip")} <ArrowRight size={17} /></Link>
           </section>
           <section className="district-list shell section-space">
-            <div className="directory-section-heading"><h2>Select a district.</h2><p>Each district brings its leadership profiles, employee research, policy records, and original source links together.</p></div>
+            <div className="directory-section-heading"><h2>Select a district.</h2><p>{preventOrphan("Each district brings its leadership profiles, employee research, policy records, and original source links together.")}</p></div>
             <div className="directory-grid">
               {districts.map((district) => {
                 const districtPeople = directoryPeople(district);
@@ -558,7 +564,7 @@ function DirectoryPage({ page }) {
                 return (
                   <Link key={district.id} to={district.route} className="directory-card">
                     {district.images[0] ? <img src={district.images[0].src} alt="" /> : <div className="directory-placeholder"><Buildings size={42} /></div>}
-                    <div><h3>{district.title}</h3><p>{districtPeople.length} people{districtPolicies.length ? `, ${districtPolicies.length} policy page${districtPolicies.length === 1 ? "" : "s"}` : ""}</p><span>Open district <ArrowRight size={17} /></span></div>
+                    <div><h3>{district.title}</h3><p>{preventOrphan(`${districtPeople.length} people${districtPolicies.length ? `, ${districtPolicies.length} policy page${districtPolicies.length === 1 ? "" : "s"}` : ""}`)}</p><span>{preventOrphan("Open district")} <ArrowRight size={17} /></span></div>
                   </Link>
                 );
               })}
@@ -571,10 +577,10 @@ function DirectoryPage({ page }) {
           <section className="district-overview shell">
             <div><UsersThree size={30} weight="duotone" /><strong>{people.length}</strong><span>Board members and employees</span></div>
           </section>
-          {policies.length > 0 && <section className="research-links shell"><h2>District policies</h2>{policies.map((policy) => <Link key={policy.id} to={policy.route}><FileText size={24} /><span><strong>{policy.title}</strong><small>Review policy research and supporting sources</small></span><ArrowRight size={19} /></Link>)}</section>}
+          {policies.length > 0 && <section className="research-links shell"><h2>District policies</h2>{policies.map((policy) => <Link key={policy.id} to={policy.route}><FileText size={24} /><span><strong>{policy.title}</strong><small>{preventOrphan("Review policy research and supporting sources")}</small></span><ArrowRight size={19} /></Link>)}</section>}
           {people.length > 0 && (
             <section className="people-section shell section-space">
-              <div className="directory-section-heading"><h2>District leadership.</h2><p>Board members and district employees are organized separately, matching the structure of the original site.</p></div>
+              <div className="directory-section-heading"><h2>District leadership.</h2><p>{preventOrphan("Board members and district employees are organized separately, matching the structure of the original site.")}</p></div>
               {[
                 ["Board members", peopleGroups.board],
                 ["Employees", peopleGroups.employees],
@@ -591,8 +597,8 @@ function DirectoryPage({ page }) {
                         <div>
                           {person.profileStatus && <strong className="person-status">{person.profileStatus}</strong>}
                           <h3>{person.title}</h3>
-                          {person.description && <p>{clampWords(person.description, 16)}</p>}
-                          <span>View research <ArrowRight size={16} /></span>
+                          {person.description && <p>{preventOrphan(clampWords(person.description, 16))}</p>}
+                          <span>{preventOrphan("View research")} <ArrowRight size={16} /></span>
                         </div>
                       </Link>
                     ))}
@@ -621,10 +627,10 @@ function DistrictWatchPage({ page }) {
           <span className="eyebrow">District Watch</span>
           <h1>Local records.<br />Clear choices.</h1>
           <div className="watch-hero-intro">
-            <p>This is District Watch, our project to expose the worst school board members and school leaders focused on indoctrinating children rather than educating them. We’re naming names because we believe in restoring America’s schools—not surrendering them.</p>
+            <p>{preventOrphan("This is District Watch, our project to expose the worst school board members and school leaders focused on indoctrinating children rather than educating them. We’re naming names because we believe in restoring America’s schools—not surrendering them.")}</p>
             <div className="watch-hero-help">
               <h2>But we need your help.</h2>
-              <p>Whether it’s dropping a <Link to="/district-watch/got-a-tip/">tip</Link> or <a href="https://restorationaction.revv.co/donate-now" target="_blank" rel="noreferrer">funding our work,</a> we can’t win the war alone. District Watch is a project of <a href="https://restoration-news.com/" target="_blank" rel="noreferrer">Restoration News</a>, your source for exclusive, headline-smashing news and opinion.</p>
+              <p>Whether it’s dropping a <Link to="/district-watch/got-a-tip/">tip</Link> or <a href="https://restorationaction.revv.co/donate-now" target="_blank" rel="noreferrer">funding our work,</a> we can’t win the war alone. District Watch is a project of <a href="https://restoration-news.com/" target="_blank" rel="noreferrer">Restoration News</a>, your source for exclusive, headline-smashing news and&nbsp;opinion.</p>
             </div>
           </div>
         </div>
@@ -635,12 +641,67 @@ function DistrictWatchPage({ page }) {
           {hubs.map((hub) => (
             <Link key={hub.id} to={hub.route} className="hub-card">
               <div className="hub-state-badge" aria-hidden="true"><small>State</small><strong>{hub.code}</strong></div>
-              <div className="hub-card-copy"><h2>{hub.name}</h2><span>{hub.districts.length} districts, {hub.people} people <ArrowRight size={17} /></span></div>
+              <div className="hub-card-copy"><h2>{hub.name}</h2><span>{preventOrphan(`${hub.districts.length} districts, ${hub.people} people`)} <ArrowRight size={17} /></span></div>
             </Link>
           ))}
         </div>
       </section>
-      <section className="tip-band shell"><div><h2>Have a tip?</h2><p>Share information about local school leadership or district policy.</p></div><Link className="primary-button" to="/district-watch/got-a-tip/">Report a tip <ArrowRight size={18} /></Link></section>
+      <section className="tip-band shell"><div><h2>Have a tip?</h2><p>{preventOrphan("Share information about local school leadership or district policy.")}</p></div><Link className="primary-button" to="/district-watch/got-a-tip/">{preventOrphan("Report a tip")} <ArrowRight size={18} /></Link></section>
+    </>
+  );
+}
+
+function TipPage() {
+  const [submitted, setSubmitted] = useState(false);
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    setSubmitted(true);
+  }
+
+  return (
+    <>
+      <section className="tip-page-hero shell">
+        <div>
+          <DistrictBreadcrumb page={pageByRoute.get("/district-watch/got-a-tip/")} />
+          <span className="eyebrow">District Watch</span>
+          <h1>Got a Tip?</h1>
+        </div>
+        <div className="tip-page-intro">
+          <p>{preventOrphan("Please report woke school board members and school leaders here.")}</p>
+          <p>{preventOrphan("Providing an email address will allow us to correspond with you if we have questions.")}</p>
+        </div>
+      </section>
+
+      <section className="tip-form-section shell" aria-labelledby="tip-form-title">
+        <div className="tip-form-heading">
+          <span>Send us a tip</span>
+          <h2 id="tip-form-title">Share what you know.</h2>
+          <p>{preventOrphan("Use the form to provide names, district details, policy information, or links to supporting material.")}</p>
+        </div>
+        <form className="tip-form" onSubmit={handleSubmit}>
+          <div className="tip-form-row">
+            <label>
+              <span>Name</span>
+              <input type="text" name="name" autoComplete="name" />
+            </label>
+            <label>
+              <span>Email Address</span>
+              <input type="email" name="email" autoComplete="email" aria-describedby="tip-email-note" />
+              <small id="tip-email-note">{preventOrphan("Optional, but helpful if we need to follow up.")}</small>
+            </label>
+          </div>
+          <label>
+            <span>Message</span>
+            <textarea name="message" rows="8" required />
+          </label>
+          <div className="tip-form-actions">
+            <button className="primary-button" type="submit">{preventOrphan("Submit tip")} <ArrowRight size={18} /></button>
+            <p>{preventOrphan("Submission delivery will be enabled when this form is connected.")}</p>
+          </div>
+          {submitted && <p className="tip-form-status" role="status">{preventOrphan("The form layout is ready. Connect a form service to begin receiving submissions.")}</p>}
+        </form>
+      </section>
     </>
   );
 }
@@ -653,12 +714,12 @@ function NewsPage({ page }) {
           <span className="page-type">Latest reporting</span>
           <h1>News</h1>
         </div>
-        <p>{page.description || "Reporting and investigations about education freedom, public schools, and the policies affecting families across America."}</p>
+        <p>{preventOrphan(page.description || "Reporting and investigations about education freedom, public schools, and the policies affecting families across America.")}</p>
       </section>
       <section className="news-index shell" aria-label="Education news articles">
         <div className="news-index-heading">
           <span>{newsArticles.length} articles</span>
-          <p>Reporting from Restoration News</p>
+          <p>{preventOrphan("Reporting from Restoration News")}</p>
         </div>
         <div className="news-index-grid">
           {newsArticles.map((article, index) => (
@@ -672,9 +733,9 @@ function NewsPage({ page }) {
               <img src={article.image} alt="" loading={index === 0 ? "eager" : "lazy"} />
               <div className="news-index-card-copy">
                 <span>Restoration News</span>
-                <h2>{article.title}</h2>
-                <p>{article.summary}</p>
-                <strong>Read article <ArrowRight size={17} /></strong>
+                <h2>{preventOrphan(article.title)}</h2>
+                <p>{preventOrphan(article.summary)}</p>
+                <strong>{preventOrphan("Read article")} <ArrowRight size={17} /></strong>
               </div>
             </a>
           ))}
@@ -686,7 +747,7 @@ function NewsPage({ page }) {
             target="_blank"
             rel="noreferrer"
           >
-            Read more <ArrowRight size={18} />
+            {preventOrphan("Read more")} <ArrowRight size={18} />
           </a>
         </div>
       </section>
@@ -709,7 +770,7 @@ function StandardPage({ page }) {
           <DistrictBreadcrumb page={page} />
           <span className="page-type">{grading ? "State scoring methodology" : page.kind.replaceAll("-", " ")}</span>
           <h1>{displayTitle}</h1>
-          {displayDescription && <p>{grading ? displayDescription : clampWords(displayDescription, 20)}</p>}
+          {displayDescription && <p>{preventOrphan(grading ? displayDescription : clampWords(displayDescription, 20))}</p>}
           {page.profileStatusDetail && (
             <div className="profile-status-notice" role="note" aria-label="Profile status update">
               <span>{page.profileStatus}</span>
@@ -731,7 +792,7 @@ function StandardPage({ page }) {
           <section className="grading-map-section" aria-labelledby="grading-map-title">
             <div className="grading-map-heading">
               <h2 id="grading-map-title">Explore the state scores</h2>
-              <p>Select a state to open its full education freedom report.</p>
+              <p>{preventOrphan("Select a state to open its full education freedom report.")}</p>
             </div>
             <StateGradesMap states={gradedStates} />
           </section>
@@ -742,7 +803,7 @@ function StandardPage({ page }) {
 }
 
 function NotFound() {
-  return <main className="not-found shell"><strong>404</strong><h1>That page is not in this design yet.</h1><p>Try the site search or return to the homepage.</p><Link className="primary-button" to="/">Go home <ArrowRight size={18} /></Link></main>;
+  return <main className="not-found shell"><strong>404</strong><h1>That page is not in this design yet.</h1><p>{preventOrphan("Try the site search or return to the homepage.")}</p><Link className="primary-button" to="/">{preventOrphan("Go home")} <ArrowRight size={18} /></Link></main>;
 }
 
 function LoadingPage() {
@@ -750,7 +811,7 @@ function LoadingPage() {
 }
 
 function LoadError({ retry }) {
-  return <main className="not-found shell"><strong>Page unavailable</strong><h1>The content did not load.</h1><p>Check the local preview server and try again.</p><button className="primary-button" onClick={retry}>Try again</button></main>;
+  return <main className="not-found shell"><strong>Page unavailable</strong><h1>The content did not load.</h1><p>{preventOrphan("Check the local preview server and try again.")}</p><button className="primary-button" onClick={retry}>{preventOrphan("Try again")}</button></main>;
 }
 
 function PageRouter() {
@@ -789,6 +850,7 @@ function PageRouter() {
   if (page.kind === "state") return <StatePage page={page} />;
   if (page.kind === "news") return <NewsPage page={page} />;
   if (page.kind === "district-watch") return <DistrictWatchPage page={page} />;
+  if (page.route === "/district-watch/got-a-tip/") return <TipPage />;
   if (page.kind === "directory") return <DirectoryPage page={page} />;
   return <StandardPage page={page} />;
 }
