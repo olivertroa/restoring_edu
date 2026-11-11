@@ -24,12 +24,13 @@ const pageById = new Map(content.pages.map((page) => [page.id, page]));
 const navItems = [
   ["Home", "/"],
   ["News", "/news/"],
-  ["Grading System", "/grading-system/"],
+  ["Education Freedom State Scores", "/grading-system/"],
   ["District Watch", "/district-watch/"],
 ];
-const headerNavItems = navItems.filter(([label]) => label !== "Grading System");
+const headerNavItems = navItems.filter(([, href]) => href !== "/grading-system/");
 
 const districtWatchStates = [
+  { name: "Arizona", code: "AZ", hubRoute: "/district-watch/arizona-schools/", sourceRoute: "/district-watch/arizona-schools/", gradeRoute: "/arizona/", image: "/media/uploads/2026/11/arizona/arizona-state-outline.svg" },
   { name: "Georgia", code: "GA", hubRoute: "/district-watch/georgia-schools/", sourceRoute: "/georgia/", image: "/media/uploads/2026/08/georgia-scaled.png" },
   { name: "Michigan", code: "MI", hubRoute: "/district-watch/michigan-schools/", sourceRoute: "/michigan/", image: "/media/uploads/2026/10/Michigan-state-map-scaled.png" },
   { name: "North Carolina", code: "NC", hubRoute: "/district-watch/north-carolina-schools/", sourceRoute: "/district-watch/north-carolina-schools/", image: "/media/uploads/2026/01/state-map_North-Carolina-scaled.png" },
@@ -98,7 +99,7 @@ function headingId(children) {
 }
 
 function stateConfigForRoute(route) {
-  return districtWatchStates.find((state) => route.startsWith(state.sourceRoute) || route === state.hubRoute);
+  return districtWatchStates.find((state) => route.startsWith(state.sourceRoute) || route === state.hubRoute || route === state.gradeRoute);
 }
 
 function districtChildren(page) {
@@ -113,6 +114,37 @@ function nameKey(value) {
 
 function directoryPeople(page) {
   return page.childIds.map((id) => pageById.get(id)).filter((child) => child?.kind === "profile");
+}
+
+function directoryPeopleGroups(page, people) {
+  const bodyLines = String(page.body || "").split("\n");
+  const groupsByName = new Map();
+  let currentGroup = "board";
+
+  bodyLines.forEach((line) => {
+    const heading = line.match(/^#\s+(.+)/)?.[1]?.toLowerCase();
+    if (heading) {
+      if (/employee|staff|superintendent|administrat|librarian/.test(heading)) currentGroup = "employees";
+      if (/board/.test(heading)) currentGroup = "board";
+      return;
+    }
+
+    const personHeading = line.match(/^#{3,6}\s+(.+)/)?.[1];
+    if (!personHeading) return;
+    const headingKey = nameKey(personHeading);
+    const person = people.find((candidate) => {
+      const candidateKey = nameKey(candidate.title);
+      return headingKey.includes(candidateKey) || candidateKey.includes(headingKey);
+    });
+    if (person) groupsByName.set(person.id, currentGroup);
+  });
+
+  const board = [];
+  const employees = [];
+  people.forEach((person) => {
+    (groupsByName.get(person.id) === "employees" ? employees : board).push(person);
+  });
+  return { board, employees };
 }
 
 function directoryPolicies(page) {
@@ -153,8 +185,8 @@ function Header() {
     <>
       <header className="site-header">
         <div className="shell nav-shell">
-          <Link className="wordmark" to="/" aria-label="Restoring Education home">
-            <img src="/media/brand/restoring-edu-logo-navy.png" alt="" />
+          <Link className="wordmark" to="/" aria-label="Restoration of Education home">
+            <img src="/media/brand/restoring-edu-logo-navy.png?v=20261111" alt="" />
           </Link>
           <nav className="desktop-nav" aria-label="Primary navigation">
             {headerNavItems.map(([label, href]) => (
@@ -223,7 +255,7 @@ function Footer() {
       <div className="shell footer-grid">
         <div>
           <Link className="wordmark footer-mark" to="/" aria-label="Restoring Education home">
-            <img src="/media/brand/restoring-edu-logo-white.png" alt="" />
+            <img src="/media/brand/restoring-edu-logo-white.png?v=20261111" alt="" />
           </Link>
           <p>Research that helps parents understand education choices, state policy, and local school leadership.</p>
         </div>
@@ -400,7 +432,7 @@ function HomePage() {
           <h2>Know who shapes your local schools.</h2>
           <p>Explore districts, board members, school leaders, policies, and the supporting source material.</p>
           <div className="watch-states">
-            {["Georgia", "Michigan", "North Carolina", "Virginia", "Wisconsin"].map((state) => <span key={state}><Check size={16} weight="bold" />{state}</span>)}
+            {districtWatchStates.map(({ name }) => <span key={name}><Check size={16} weight="bold" />{name}</span>)}
           </div>
           <Link className="primary-button" to="/district-watch/">Explore districts <ArrowRight size={18} /></Link>
         </div>
@@ -433,7 +465,16 @@ function HomePage() {
 function MarkdownBody({ page, stripFirstHeading = true, stripFirstImage = false }) {
   let body = page.body;
   if (stripFirstHeading) body = body.replace(/^#\s+[^\n]+\n+/, "");
-  if (stripFirstImage) body = body.replace(/^!\[[^\]]*\]\([^)]+\)\s*/m, "");
+  if (stripFirstImage && page.images?.[0]?.src) {
+    let removedHeroImage = false;
+    body = body.replace(/!\[[^\]]*\]\(([^)]+)\)\s*/g, (match, src) => {
+      if (!removedHeroImage && src === page.images[0].src) {
+        removedHeroImage = true;
+        return "";
+      }
+      return match;
+    });
+  }
   if (page.kind === "state") body = body.replace(/^#\s+CURRENT GRADE:\s*[A-F][+-]?\s*/i, "");
   return (
     <div className="prose">
@@ -454,7 +495,7 @@ function MarkdownBody({ page, stripFirstHeading = true, stripFirstImage = false 
 
 function StatePage({ page }) {
   const description = clampWords(page.description || page.body.replace(/[#*_\[\]\(\)]/g, " ").replace(/\s+/g, " "), 20);
-  const districtState = districtWatchStates.find((state) => state.sourceRoute === page.route && state.hubRoute !== page.route);
+  const districtState = districtWatchStates.find((state) => (state.gradeRoute || state.sourceRoute) === page.route && state.hubRoute !== page.route);
   return (
     <>
       <section className="page-hero state-hero shell">
@@ -489,6 +530,7 @@ function DirectoryPage({ page }) {
   const state = districtWatchStates.find((entry) => entry.hubRoute === page.route);
   const districts = state ? districtChildren(page) : [];
   const people = state ? [] : directoryPeople(page);
+  const peopleGroups = state ? { board: [], employees: [] } : directoryPeopleGroups(page, people);
   const policies = state ? [] : directoryPolicies(page);
   const image = state?.image || page.images[0]?.src || "/media/uploads/2026/01/district-watch-heading-scaled.png";
   const totalPeople = districts.reduce((sum, district) => sum + directoryPeople(district).length, 0);
@@ -528,25 +570,35 @@ function DirectoryPage({ page }) {
         <>
           <section className="district-overview shell">
             <div><UsersThree size={30} weight="duotone" /><strong>{people.length}</strong><span>Board members and employees</span></div>
-            <div><FileText size={30} weight="duotone" /><strong>{policies.length}</strong><span>Policy {policies.length === 1 ? "page" : "pages"}</span></div>
           </section>
           {policies.length > 0 && <section className="research-links shell"><h2>District policies</h2>{policies.map((policy) => <Link key={policy.id} to={policy.route}><FileText size={24} /><span><strong>{policy.title}</strong><small>Review policy research and supporting sources</small></span><ArrowRight size={19} /></Link>)}</section>}
           {people.length > 0 && (
             <section className="people-section shell section-space">
-              <div className="directory-section-heading"><h2>Board members and employees.</h2><p>Open a profile to review the archived research, images, and original supporting links.</p></div>
-              <div className="people-grid">
-                {people.map((person) => (
-                  <Link key={person.id} to={person.route} className="person-card">
-                    {person.images[0] ? <img src={person.images[0].src} alt={person.images[0].alt || person.title} /> : <div className="person-placeholder"><UsersThree size={35} /></div>}
-                    <div>
-                      {person.profileStatus && <strong className="person-status">{person.profileStatus}</strong>}
-                      <h3>{person.title}</h3>
-                      {person.description && <p>{clampWords(person.description, 16)}</p>}
-                      <span>View research <ArrowRight size={16} /></span>
-                    </div>
-                  </Link>
-                ))}
-              </div>
+              <div className="directory-section-heading"><h2>District leadership.</h2><p>Board members and district employees are organized separately, matching the structure of the original site.</p></div>
+              {[
+                ["Board members", peopleGroups.board],
+                ["Employees", peopleGroups.employees],
+              ].filter(([, group]) => group.length > 0).map(([title, group]) => (
+                <section className="people-group" key={title} aria-labelledby={`${headingId(title)}-${page.id}`}>
+                  <div className="people-group-heading">
+                    <h3 id={`${headingId(title)}-${page.id}`}>{title}</h3>
+                    <span>{group.length} {group.length === 1 ? "profile" : "profiles"}</span>
+                  </div>
+                  <div className="people-grid">
+                    {group.map((person) => (
+                      <Link key={person.id} to={person.route} className="person-card">
+                        {person.images[0] ? <img src={person.images[0].src} alt={person.images[0].alt || person.title} /> : <div className="person-placeholder"><UsersThree size={35} /></div>}
+                        <div>
+                          {person.profileStatus && <strong className="person-status">{person.profileStatus}</strong>}
+                          <h3>{person.title}</h3>
+                          {person.description && <p>{clampWords(person.description, 16)}</p>}
+                          <span>View research <ArrowRight size={16} /></span>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                </section>
+              ))}
             </section>
           )}
         </>
@@ -645,15 +697,19 @@ function NewsPage({ page }) {
 function StandardPage({ page }) {
   const children = page.childIds.map((id) => pageById.get(id)).filter(Boolean);
   const grading = page.kind === "grading";
+  const displayTitle = grading ? "Education Freedom State Scores" : page.title;
+  const displayDescription = grading
+    ? "See how states support education freedom through school choice, portable funding, and protections for homeschooling."
+    : page.description;
   const portrait = grading ? null : page.images[0]?.src;
   return (
     <>
-      <section className={`page-hero shell ${grading ? "grading-hero" : ""} ${portrait && ["profile", "policy", "post"].includes(page.kind) ? "profile-hero" : ""} ${page.kind === "profile" ? "person-profile-hero" : ""}`}>
+      <section className={`page-hero shell ${grading ? "grading-hero" : ""} ${portrait && ["profile", "policy", "post"].includes(page.kind) ? "profile-hero" : ""} ${page.kind === "profile" ? "person-profile-hero" : ""} ${page.kind === "policy" ? "policy-page-hero" : ""}`}>
         <div>
           <DistrictBreadcrumb page={page} />
-          <span className="page-type">{page.kind.replaceAll("-", " ")}</span>
-          <h1>{page.title}</h1>
-          {page.description && <p>{clampWords(page.description, 20)}</p>}
+          <span className="page-type">{grading ? "State scoring methodology" : page.kind.replaceAll("-", " ")}</span>
+          <h1>{displayTitle}</h1>
+          {displayDescription && <p>{grading ? displayDescription : clampWords(displayDescription, 20)}</p>}
           {page.profileStatusDetail && (
             <div className="profile-status-notice" role="note" aria-label="Profile status update">
               <span>{page.profileStatus}</span>
@@ -670,11 +726,11 @@ function StandardPage({ page }) {
       </section>
       {children.length > 0 && <section className="child-links shell">{children.map((child) => <Link key={child.id} to={child.route}>{child.title}<ArrowRight size={18} /></Link>)}</section>}
       <main className="content-shell shell">
-        <MarkdownBody page={page} stripFirstImage={grading} />
+        <MarkdownBody page={page} stripFirstImage={grading || page.kind === "profile"} />
         {grading && (
           <section className="grading-map-section" aria-labelledby="grading-map-title">
             <div className="grading-map-heading">
-              <h2 id="grading-map-title">Explore state grades</h2>
+              <h2 id="grading-map-title">Explore the state scores</h2>
               <p>Select a state to open its full education freedom report.</p>
             </div>
             <StateGradesMap states={gradedStates} />
@@ -705,7 +761,8 @@ function PageRouter() {
   const [error, setError] = useState(false);
   const [attempt, setAttempt] = useState(0);
   useEffect(() => {
-    document.title = pageMeta ? `${pageMeta.title} | Restoring Education` : "Restoring Education";
+    const pageTitle = pageMeta?.kind === "grading" ? "Education Freedom State Scores" : pageMeta?.title;
+    document.title = pageTitle ? `${pageTitle} | Restoration of Education` : "Restoration of Education";
     window.scrollTo({ top: 0, behavior: "instant" });
     if (!pageMeta) return;
     if (["home", "district-watch"].includes(pageMeta.kind)) {

@@ -13,13 +13,29 @@ PROJECT = Path(__file__).resolve().parents[1]
 ARCHIVE = PROJECT.parent / "content-export"
 OUT = PROJECT / "src/data/site-content.json"
 PAGE_OUT = PROJECT / "public/content"
+CUSTOM_CONTENT = PROJECT / "content/arizona-district-watch.json"
 DISTRICT_HUB_ROUTES = {
+    "/district-watch/arizona-schools/",
     "/district-watch/georgia-schools/",
     "/district-watch/michigan-schools/",
     "/district-watch/north-carolina-schools/",
     "/district-watch/virginia-schools/",
     "/district-watch/wisconsin-schools/",
 }
+
+
+def merge_custom_pages(pages: list[dict]) -> list[dict]:
+    if not CUSTOM_CONTENT.exists():
+        return pages
+    custom_pages = json.loads(CUSTOM_CONTENT.read_text()).get("pages", [])
+    custom_ids = {entry["id"] for entry in custom_pages}
+    custom_routes = {entry["route"] for entry in custom_pages}
+    merged = [entry for entry in pages if entry["id"] not in custom_ids and entry["route"] not in custom_routes]
+    PAGE_OUT.mkdir(parents=True, exist_ok=True)
+    for entry in custom_pages:
+        (PAGE_OUT / f"{entry['id']}.json").write_text(json.dumps(entry, ensure_ascii=False))
+        merged.append({key: value for key, value in entry.items() if key != "body"})
+    return merged
 
 
 def frontmatter_from_markdown(path: Path) -> dict[str, str]:
@@ -124,9 +140,12 @@ def main():
     if not manifest_path.exists() or not media_catalog_path.exists():
         generated_pages = list(PAGE_OUT.glob("*.json")) if PAGE_OUT.exists() else []
         if OUT.exists() and generated_pages:
+            payload = json.loads(OUT.read_text())
+            payload["pages"] = merge_custom_pages(payload.get("pages", []))
+            OUT.write_text(json.dumps(payload, ensure_ascii=False))
             print(
                 "Source content archive is unavailable; "
-                f"using committed content payload with {len(generated_pages)} pages"
+                f"using committed content payload with {len(payload['pages'])} pages"
             )
             return
         raise FileNotFoundError(
@@ -187,6 +206,7 @@ def main():
         (PAGE_OUT / f"{item['wordpress_id']}.json").write_text(json.dumps(page, ensure_ascii=False))
         pages.append({key: value for key, value in page.items() if key != "body"})
 
+    pages = merge_custom_pages(pages)
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps({"generatedFrom": str(ARCHIVE), "pages": pages}, ensure_ascii=False))
     print(f"Generated {OUT} with {len(pages)} routes")

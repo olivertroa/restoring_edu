@@ -1,0 +1,340 @@
+{
+  "pages": [
+    {
+      "id": 9000,
+      "title": "Arizona Schools",
+      "slug": "arizona-schools",
+      "route": "/district-watch/arizona-schools/",
+      "sourceUrl": "",
+      "parentId": 2237,
+      "childIds": [
+        9010,
+        9020,
+        9030
+      ],
+      "kind": "directory",
+      "grade": null,
+      "description": "Select an Arizona district to review its board members, employees, policies, and supporting sources.",
+      "body": "",
+      "images": [
+        {
+          "src": "/media/uploads/2026/11/arizona/arizona-state-outline.svg",
+          "alt": "Arizona state outline"
+        }
+      ],
+      "modified": "2026-11-11T00:00:00"
+    },
+    {
+      "id": 9010,
+      "title": "Tolleson Union High School District",
+      "slug": "tolleson-union-high-school-district",
+      "route": "/district-watch/arizona-schools/tolleson-union-high-school-district/",
+      "sourceUrl": "https://www.tuhsd.org/",
+      "parentId": 9000,
+      "childIds": [
+        9012
+      ],
+      "kind": "directory",
+      "grade": null,
+      "description": "Review Tolleson Union High School District leadership and supporting research.",
+      "body": "# Employees\n\n#### Jeremy Calles",
+      "images": [
+        {
+          "src": "/media/uploads/2026/11/arizona/tolleson-union-logo.png",
+          "alt": "Tolleson Union High School District logo"
+        }
+      ],
+      "modified": "2026-11-11T00:00:00"
+    },
+    {
+      "id": 9011,
+      "title": "Tolleson Union High School District Policies",
+      "slug": "policies",
+      "route": "/district-watch/arizona-schools/tolleson-union-high-school-district/policies/",
+      "sourceUrl": "https://www.tuhsd.org/",
+      "parentId": 9010,
+      "childIds": [],
+      "kind": "policy",
+      "grade": null,
+      "description": "Research and source links concerning Tolleson Union High School District policies.",
+      "body": "[Tolleson Union High School District](https://www.tuhsd.org/)\n\nThe District [stated](https://web.archive.org/web/20260930202443/https://www.azfamily.com/2025/05/01/could-target-anything-why-an-arizona-school-district-wont-comply-with-dei-order/) that it will defy President Trump by not adhering to his DEI ban in K-12 schools.\n\nThe District [refers](https://web.archive.org/web/20260930202159/https://www.tuhsd.org/calendar-event/indigenous-peoples-day-6) to Columbus Day to as Indigenous People’s Day.",
+      "images": [
+        {
+          "src": "/media/uploads/2026/11/arizona/tolleson-union-logo.png",
+          "alt": "Tolleson Union High School District logo"
+        }
+      ],
+      "modified": "2026-11-11T00:00:00"
+    },
+    {
+      "id": 9012,
+      "title": "Jeremy Calles",
+      "slug": "jeremy-calles",
+      "route": "/district-watch/arizona-schools/tolleson-union-high-school-district/jeremy-calles/",
+      "sourceUrl": "",
+      "parentId": 9010,
+      "childIds": [],
+      "kind": "profile",
+      "grade": null,
+      "description": "Superintendent of Tolleson Union High School District.",
+      "body": "At a special governing board meeting, Superintendent Calles [tore](https://web.archive.org/web/20260930203029/https://www.kjzz.org/education/2025-04-30/some-az-districts-push-back-as-horne-lists-those-that-havent-signed-federal-dei-letter) up a letter from the U.S. Department of Education stating that school districts must comply with President Trump’s executive order banning DEI in K-12 education.\n\n- Calles [stated](https://web.archive.org/web/20260930203029/https://www.kjzz.org/education/2025-04-30/some-az-districts-push-back-as-horne-lists-those-that-havent-signed-federal-dei-letter) “I have grown up with diversity, equity and inclusion being a good thing and with that, I cannot in good conscience sign that document,\"\n\n- In reference to the letter, the Superintendent [said](https://web.archive.org/web/20260930202443/https://www.azfamily.com/2025/05/01/could-target-anything-why-an-arizona-school-district-wont-comply-with-dei-order/): “I don’t think they’re limiting themselves to what they could call illegal DEI, and once you sign the letter, you know you give a mouse a cookie; what’s next? They’re going to come back, and every single time they want you to change what you’re doing, say that’s illegal.”\n\n- He continued, [stating](https://web.archive.org/web/20260930202443/https://www.azfamily.com/2025/05/01/could-target-anything-why-an-arizona-school-district-wont-comply-with-dei-order/): “for me, being able to keep the money is not how we protect students. It’s not wanting a student to feel like they don’t belong, that there isn’t a place for them. That’s something that we can’t put a dollar figure on.”",
+      "images": [
+        {
+          "src": "/media/uploads/2026/11/arizona/jeremy-calles.jpeg",
+          "alt": "Jeremy Calles"
+        }
+      ],
+      "modified": "2026-11-11T00:00:00"
+    },
+    {
+      "id": 9020,
+      "title": "Flagstaff Unified School District",
+      "slug": "flagstaff-unified-school-district",
+      "route": "/district-watch/arizona-schools/flagstaff-unified-school-district/",
+      "sourceUrl": "https://www.fusd1.org/",
+      "parentId": 9000,
+      "childIds": [
+        9022,
+        9023,
+        9024,
+        9025
+      ],
+      "kind": "directory",
+      "grade": null,
+      "description": "Review Flagstaff Unified School District board members and supporting research.",
+      "body": "# Board members\n\n#### Aaron Cirzan\n\n#### Kortney Zesiger\n\n#### Carolyn Kidd\n\n#### Erik Sather",
+      "images": [
+        {
+          "src": "/media/uploads/2026/11/arizona/flagstaff-unified-logo.png",
+          "alt": "Flagstaff Unified School District logo"
+        }
+      ],
+      "modified": "2026-11-11T00:00:00"
+    },
+    {
+      "id": 9021,
+      "title": "Flagstaff Unified School District Policies",
+      "slug": "policies",
+      "route": "/district-watch/arizona-schools/flagstaff-unified-school-district/policies/",
+      "sourceUrl": "https://www.fusd1.org/",
+      "parentId": 9020,
+      "childIds": [],
+      "kind": "policy",
+      "grade": null,
+      "description": "Research and source links concerning Flagstaff Unified School District policies.",
+      "body": "Flagstaff Unified School District [hides](https://web.archive.org/web/20260925140921/https://defendinged.org/incidents/flagstaff-unified-school-district-has-guidance-that-the-gender-identity-of-students-can-be-hidden-from-their-parents/) students’ social transitions from their parents and allows biological boys and girls to use bathrooms “according to their preferred gender identity.”\n\n- “Transgender students should not be forced to use a restroom or locker room aligned with their biological sex if it conflicts with their gender identity.”\n\nThe school district has an [Anti-Bias and Anti-Racism Advisory Committee](https://web.archive.org/web/20260925194425/https://www.fusd1.org/42463_4).\n\n- “Citing the need to dismantle barriers that negatively impact Indigenous students, students of color, students with disabilities, and LGBTQ+, the Governing Board of the Flagstaff Unified School District established an Anti-Racism, Anti-Bias Task Force at its July 14th meeting. The purpose of the task force is to create and apply a shared understanding and commitment to equity, inclusion, and anti-racism - a key FUSD commitment outlined in the District strategic plan adopted by the Governing Board in early 2018.”\n\n- The school district created the committee and hired Angelina E. Castagno, who wrote [Educated in Whiteness; Good Intentions and Diversity in Schools](https://web.archive.org/web/20260925194828/https://www.upress.umn.edu/9780816681655/educated-in-whiteness/), and is the Executive Director of progressive consulting agency Just Perspective, LLC.\n\n- A December 2020 report for the school board [stated](https://restoration-news.com/getContentAsset/7a8346b7-b3cc-4f7e-8179-d597f2012e72/347abc5f-3708-4979-a52d-d9fb8570b282/fusd_final_report_dec_14_v3_1.pdf?language=en) “Dr. Castagno was hired to facilitate the Task Force due to her experience and expertise related to anti-racist and equity-oriented schooling.”\n\n- She [described](https://web.archive.org/web/20260925194616/https://in.nau.edu/ethics/117-2/castagno-bio/) her main ethical focuses as being “education and justice, equity, diversity, and inclusion.”\n\nFlagstaff Unified had a [Director of Equity, Inclusion, and Support](https://web.archive.org/web/20260925194425/https://www.fusd1.org/42463_4).\n\nThe school board passed the following resolutions:\n\n- [The Right of Youth to Action on Climate Change](https://restoration-news.com/getContentAsset/74a29b4a-e61e-4da5-b33a-9dcca73e598f/347abc5f-3708-4979-a52d-d9fb8570b282/fusd_governing_board_climate_action_resolution_2019.pdf?language=en)\n\n“The Governing Board recognizes that climate change is a youth issue, a generational justice and human rights issue, a social justice, and an equity issue.”\n“The Governing Board will expand its efforts to implement renewable energy, energy efficient heating, cooling, and transportation and reduce plastic and Styrofoam waste across the District.”\n\n“The Governing Board supports climate change education in the District.”\n\n- [Inclusion and Protection Resolution](https://restoration-news.com/getContentAsset/88388b4b-c629-4c9b-b967-311abeb6d34a/347abc5f-3708-4979-a52d-d9fb8570b282/protection_and_inclusion_resolution_2025.pdf?language=en) (2025)\n\n“The District [commits](https://web.archive.org/web/20261028195408/https://www.fusd1.org/governing-board), specifically, to: …working together side-by-side and with stakeholders to address issues of racism, poverty, discrimination, and hate; and continuing to work… for its historically marginalized students.”\n\n“Continuing the District’s policy of prohibiting any individual or organization to enter a school site if the educational setting would be disrupted by that visit, requiring immigration officials to have judicial warrant to enter District property.”\n\n“Continuing to shun hate, judgment, violence, discrimination, and divisiveness, and instead, promoting peace, acceptance, inclusivity, compassion, equity, and love for all students and families.”\n\n- [Inclusion and Protection Resolution (2017)](https://restoration-news.com/getContentAsset/2bbe158c-047d-4341-ac1a-2b7c24095b17/347abc5f-3708-4979-a52d-d9fb8570b282/inclusion_and_protection_resol_52317.pdf?language=en)\n\n“The District [commits](https://web.archive.org/web/20261028195408/https://www.fusd1.org/governing-board), specifically, to… providing the college and career counseling resources needed to assist Deferred Action Immigrant status (DACA) students, other immigration students, as well as other students who lack knowledge and resources.”\n\n- [Indigenous Peoples’ Day Resolution](https://restoration-news.com/getContentAsset/451134d1-60f7-4dff-9cf6-c8dc8eb00886/347abc5f-3708-4979-a52d-d9fb8570b282/fusd_governing_board_indigenous_peoples_day_2020.pdf?language=en)\n\n“The City of Flagstaff recognizes that it is built on lands known and loved and inhabited by people since time immemorial who are indigenous to the region.”\n\n“As a result of colonialism and economic, political, and educational justices, Indigenous people in the region have faced trauma and formidable challenges to health and well-being across generations.”\n\n“The observance of Columbus Day is a celebration of genocide against Indigenous peoples.”\n\n“We… recognize that COVID has exacerbated the already disproportionate health, educational and economic disparities facing Indigenous Peoples\n\n- [Right to Safe and Gun-Free Schools Resolution](https://restoration-news.com/getContentAsset/5384e204-d6e9-45d6-9535-73eedbdc377e/347abc5f-3708-4979-a52d-d9fb8570b282/resolution_safe_and_gun_free_schools_41018.pdf?language=en)\n\n“The Flagstaff Unified School District Governing Board is committed to supporting legislation that calls for reasonable restrictions on access to guns and other weapons, including limiting access to those with mental health issues, expanding background checks to include weapons purchased at gun shows and on the internet, reenacting the federal ban on the sale and possession of military-style assault weapons, and banning large capacity ammunition magazines.”\n\n“The Flagstaff Unified School District Governing Board opposes efforts to arm teachers and school staff, advocating instead for state funding to support … other school safety measures.”",
+      "images": [
+        {
+          "src": "/media/uploads/2026/11/arizona/flagstaff-unified-logo.png",
+          "alt": "Flagstaff Unified School District logo"
+        }
+      ],
+      "modified": "2026-11-11T00:00:00"
+    },
+    {
+      "id": 9022,
+      "title": "Aaron Cirzan",
+      "slug": "aaron-cirzan",
+      "route": "/district-watch/arizona-schools/flagstaff-unified-school-district/aaron-cirzan/",
+      "sourceUrl": "",
+      "parentId": 9020,
+      "childIds": [],
+      "kind": "profile",
+      "grade": null,
+      "description": "Flagstaff Unified School Board President.",
+      "body": "In a candidate [questionnaire](https://web.archive.org/web/20260929152725/https://friendsofflagstaff.org/2024-fusd-candidate-questionnaire-by-candidate-name/), Cirzan stated:\n\n“the current ESA program raises concerns around equity, accountability and the diversion of already limited funding resources for public schools.”\n\n“It is crucial to develop an inclusive environment that validates students identities and reduces feelings of isolation and confusion.  This curriculum has the ability to do just that, and do so without prescribing identity to anyone who does not identify in a certain way. It does not threaten or pressure students, but instead provides the opportunity to understand the realities of gender identification, relationships and sexual health.”\n\n“Books like The Color Purple, describe realities that many of our students, and their families, have experienced.  Just because an experience is uncomfortable, or foreign to an individual, does not mean it needs to be removed from the classroom.  Banning books often leads to voices from communities of color and the LGBTQIA+ community being left out of the classroom, and this a huge problem.  It can limit the understanding of our students to a singular, mainstream experience.”\n\nAnd he advocated for electric school buses:\n“FUSD recently purchased two electric school buses and charging stations after receipt of an EPA grant. What is your opinion on purchasing additional electric school buses and associated charging stations?\n‘Electric busses provide FUSD the opportunity to exemplify that the education provided in the classroom is replicated in our broader practices.’”",
+      "images": [
+        {
+          "src": "/media/uploads/2026/11/arizona/aaron-cirzan.jpeg",
+          "alt": "Aaron Cirzan"
+        }
+      ],
+      "modified": "2026-11-11T00:00:00"
+    },
+    {
+      "id": 9023,
+      "title": "Kortney Zesiger",
+      "slug": "kortney-zesiger",
+      "route": "/district-watch/arizona-schools/flagstaff-unified-school-district/kortney-zesiger/",
+      "sourceUrl": "",
+      "parentId": 9020,
+      "childIds": [],
+      "kind": "profile",
+      "grade": null,
+      "description": "Flagstaff Unified School Board Member.",
+      "body": "Flagstaff Unified School Board Member\n\nZesiger was [endorsed](https://web.archive.org/web/20260929143323/https://www.arizonalist.org/elected-officials/kortney-zesiger/) by [Arizona List](https://web.archive.org/web/20260929143138/https://www.arizonalist.org/about-us/mission-vision/), a women’s group with the purpose of electing pro-abortion Democratic women.",
+      "images": [
+        {
+          "src": "/media/uploads/2026/11/arizona/kortney-zesiger.jpeg",
+          "alt": "Kortney Zesiger"
+        }
+      ],
+      "modified": "2026-11-11T00:00:00"
+    },
+    {
+      "id": 9024,
+      "title": "Carolyn Kidd",
+      "slug": "carolyn-kidd",
+      "route": "/district-watch/arizona-schools/flagstaff-unified-school-district/carolyn-kidd/",
+      "sourceUrl": "",
+      "parentId": 9020,
+      "childIds": [],
+      "kind": "profile",
+      "grade": null,
+      "description": "Flagstaff Unified School Board Member.",
+      "body": "Flagstaff Unified School Board Member\n\nKidd was [endorsed](https://web.archive.org/web/20260929144406/https://www.arizonalist.org/elected-officials/carolyn-kidd/) by [Arizona List](https://web.archive.org/web/20260929143138/https://www.arizonalist.org/about-us/mission-vision/), a women’s group with the purpose of electing pro-abortion Democratic women.",
+      "images": [
+        {
+          "src": "/media/uploads/2026/11/arizona/carolyn-kidd.png",
+          "alt": "Carolyn Kidd"
+        }
+      ],
+      "modified": "2026-11-11T00:00:00"
+    },
+    {
+      "id": 9025,
+      "title": "Erik Sather",
+      "slug": "erik-sather",
+      "route": "/district-watch/arizona-schools/flagstaff-unified-school-district/erik-sather/",
+      "sourceUrl": "",
+      "parentId": 9020,
+      "childIds": [],
+      "kind": "profile",
+      "grade": null,
+      "description": "Flagstaff Unified School Board Member.",
+      "body": "Flagstaff Unified School Board Member\n\n[Endorsed](https://web.archive.org/web/20260929142536/https://eriksather.org/) by [Moms Demand Action](https://web.archive.org/web/20260929142352/https://momsdemandaction.org/about/) – For Gun Sense In America, an organization supporting restrictions on the 2nd Amendment.",
+      "images": [
+        {
+          "src": "/media/uploads/2026/11/arizona/erik-sather.png",
+          "alt": "Erik Sather"
+        }
+      ],
+      "modified": "2026-11-11T00:00:00"
+    },
+    {
+      "id": 9030,
+      "title": "Phoenix Union High School District",
+      "slug": "phoenix-union-high-school-district",
+      "route": "/district-watch/arizona-schools/phoenix-union-high-school-district/",
+      "sourceUrl": "https://www.pxu.org/",
+      "parentId": 9000,
+      "childIds": [
+        9032,
+        9033,
+        9034,
+        9035
+      ],
+      "kind": "directory",
+      "grade": null,
+      "description": "Review Phoenix Union High School District board members, employees, and supporting research.",
+      "body": "# Board members\n\n#### Francisco Pastor-Rivera\n\n#### Lizette Mier\n\n#### Ceyshe Napa\n\n# Employees\n\n#### Thea Andrade",
+      "images": [
+        {
+          "src": "/media/uploads/2026/11/arizona/phoenix-union-logo.svg",
+          "alt": "Phoenix Union High School District logo"
+        }
+      ],
+      "modified": "2026-11-11T00:00:00"
+    },
+    {
+      "id": 9031,
+      "title": "Phoenix Union High School District Policies",
+      "slug": "policies",
+      "route": "/district-watch/arizona-schools/phoenix-union-high-school-district/policies/",
+      "sourceUrl": "https://www.pxu.org/",
+      "parentId": 9030,
+      "childIds": [],
+      "kind": "policy",
+      "grade": null,
+      "description": "Research and source links concerning Phoenix Union High School District policies.",
+      "body": "PXU proudly [shares](https://web.archive.org/web/20261028192753/https://www.pxu.org/o/pusd-210/page/district-information) that they are “one of the largest and most progressive high school districts in the United States.”\n\nThe District Information [webpage](https://web.archive.org/web/20261028192753/https://www.pxu.org/o/pusd-210/page/district-information) continues; “Diversity is a hallmark at Phoenix Union, with a population of 86% Latino, a large refugee population, and students who speak over 100 languages.”\n\nTheir PHX Student Bill of Rights [states](https://web.archive.org/web/20260911153207/https://www.pxu.org/page/student-bill-of-rights) that the district promotes “well-being in a safe space.”\n\nThe [district issued](https://web.archive.org/web/20260724225406/https://www.pxu.org/page/land-acknowledgement) a “Land Acknowledgement” dedicating their land to “22 sovereign nations of Arizona.\n\n- They said “PXU understands the importance of providing reparations through truth-telling. We recognize the historical injustices not traditionally taught in the classroom and are committed to practices prioritizing Native American knowledge, history, representation, and healing. We commit with an open mind to always respect the land, its histories, and its ancestors.”\n\nOn their website, they [state](https://web.archive.org/web/20260724225406/https://www.pxu.org/page/land-acknowledgement); “The Phoenix High School District (PXU) is responsible and committed to creating educational environments that prioritize the achievements of Native American students. We are committed to making their cultural identity visible by acknowledging that our school district resides upon the ancestral lands of the original caretakers: The Hunugam, ancestors of the Akimel O’odham, Onk Akimel O’odham, Tohono O’odham & the Ak-Chin.”\n\nThey have an exclusive Native American Education Program.\n\n- The school district [says](https://web.archive.org/web/20260918154409/https://www.pxu.org/o/pxu/page/native-american-program) the program “works to support and encourage academic, social, and extra-curricular success for all Native American high school students within [the] school district by providing culturally appropriate services, resources, and opportunities.”\n\n- These programs grant an educational advantage to Native American students not afforded to students of other races. The program’s [staff](https://web.archive.org/web/20260918154409/https://www.pxu.org/o/pxu/page/native-american-program) “consists of one specialist and Native American student advisors…”\n\nThe school district published a video called “Vax to the Max,” establishing an 85% vaccination goal.\n\n![Vax to the Max district video screenshot](/media/uploads/2026/11/arizona/pxu-vax-to-the-max-1.png)\n\n![Vax to the Max vaccination goal screenshot](/media/uploads/2026/11/arizona/pxu-vax-to-the-max-2.png)\n\nThe district [named](https://web.archive.org/web/20260911152813/https://www.pxu.org/page/history) a high school after Cesar Chavez.\n\n- The school opened in 1999 and underwent a name change to Cactus Canyon High School after the school board voted to rebrand the school. The vote came after sexual abuse allegations against the late Chavez arose March 18th, 2026, from National Farmworkers Association co-founder Delores Huerta.\n\nThe district also [renamed](https://web.archive.org/web/20260911154353/https://hoodline.com/2026/03/phoenix-high-boots-cesar-chavez-name-amid-sex-abuse-uproar/) their celebrations of Cesar Chavez Day.\n\n- The name change correlated with the school’s name change. Phoenix City Council’s removal of Chavez’s namesake [preempted](https://web.archive.org/web/20260911155057/https://ktar.com/arizona-news/phoenix-council-removes-cesar-chavez) the school district’s actions.\n\nSchool board members are [required](https://restoration-news.com/getContentAsset/9aff32d3-493e-4ef0-8f8f-a2b451cd8a18/347abc5f-3708-4979-a52d-d9fb8570b282/BIB-BOARD-MEMBER-DEVELOPMENT-OPPORTUNITIES.pdf?language=en) to be trained in “Anti-Racism/Educational Equity/Diversity/Inclusion.”\n\nThe school board passed the following resolutions:\n\n- [Resolution to Advance Equity and End Systemic Racism](https://restoration-news.com/getContentAsset/6e816d3e-f4ef-4bb6-ae89-64d48c0e524a/347abc5f-3708-4979-a52d-d9fb8570b282/Resolution_to_Advance_Equity_and_End_Systemic_.pdf?language=en)\n\n“Racial injustice and system racism persist in our country and community.”\n\n“Law enforcement and criminal justice systems have a disproportionate negative impact on communities of color.”\n\nThe resolution refers to the deaths of George Floyd, Jamar Clark, and Michael Brown, as examples of “racially-biased police violence.”\n\n“Police presence can be a source of fear and trauma, especially for students of color.”\n\n“The District proudly supports the Black Lives Matter movement.”\n\n“The District will not renew an intergovernmental agreement with the Phoenix Police Department for school resource officers.”\n\n“The District renews its commitment to recruiting and retaining diverse employees and creating an inclusive workplace.”\n\n- [Resolution Supporting Transgender Children and Youth](https://restoration-news.com/getContentAsset/3540c28b-a796-4125-b818-9a634b7680cb/347abc5f-3708-4979-a52d-d9fb8570b282/Resolution_Supporting_Transgender_Children_and.pdf?language=en)\n\nDeclares the district as standing in opposition to state legislation banning boys in girls’ sports.\n\n“The Governing Board opposes legislation that is an attack on the safety of trans children and youth including legislation requiring them to participate in athletic competitions based on their sex assigned at birth.”\n\n- [Resolution Opposing Expansion of Education Savings Accounts](https://restoration-news.com/getContentAsset/32b3918e-3f24-41a9-8d1d-f902242f91a6/347abc5f-3708-4979-a52d-d9fb8570b282/Resolution_Opposing_Expansion_of_Education_Sav.pdf?language=en)\n\n“School governing board members… oppose the passage and signing of SB1431 into law and urge its reconsideration and repeal.”\n\n- [Resolution Opposing the Adoption of HCR 2060 by the Arizona Legislature](https://restoration-news.com/getContentAsset/38f6d2f7-3add-4f86-8359-13f463043b8c/347abc5f-3708-4979-a52d-d9fb8570b282/Resolution_Opposing_the_Adoption_of_HCR_2060_B.pdf?language=en)\n\n“The Arizona Legislature is considering House Concurrent Resolution (“HCR”) 2060 as an effort to selectively enforce immigration laws and penalize undocumented immigrants.”\n\n“HCR 2060 will lead to racial profiling of immigrants and citizens because of the color of their skin, manner of speech, race, and ethnic origin.”\n\n“The PXU Governing Board publicly denounces the adoption of the anti-immigration HCR 2060, expresses its abhorrence to the officials of the State of Arizona who support its enactment, and urges all members of the Arizona Legislature to vote against adopting HCR 2060.”\n\n- [Proclaiming the Second Monday in October as Indigenous Peoples’ Day](https://restoration-news.com/getContentAsset/fad0ac35-6f36-4fa5-8818-8140c90a2bd4/347abc5f-3708-4979-a52d-d9fb8570b282/Proclaiming_The_Second_Monday_In_October_As_In.pdf?language=en)\n\n“The Phoenix Union High School District Governing Board has a responsibility to oppose the systemic racism toward indigenous peoples in the United Stales, which perpetuates high rates of poverty and income inequality, exacerbating disproportionate health, education, and social crises.”\n\nThe “Governing Board seeks to combat prejudice and eliminate discrimination stemming from colonization and to promote awareness, understanding, and good relations among indigenous peoples and all other segments of our district.”\n\n- [Love and Acceptance Resolution](https://restoration-news.com/getContentAsset/b4d1718a-4248-41ee-9108-76b81cda5115/347abc5f-3708-4979-a52d-d9fb8570b282/Love_and_Acceptance_Resolution_1-12-17.pdf?language=en)\n\n“Phoenix Union values all lives equally - black lives, brown lives, disabled lives, undocumented lives, LGBT lives, gifted lives, refugee lives, female lives and any other category or subgroup or demographic that may be stigmatized; will love and accept everyone.”\nThe resolution states that is “standing behind the District's Deferred Action for Childhood Arrival’s (DACA) recipients and DREAMers regardless of changes in the law or policy.”\n\n- [Resolution to Commit to the Resilience of PXU and the Community in Which It Serves (Official PXU Climate Action Resolution)](https://restoration-news.com/getContentAsset/96b959dc-374e-4151-9c06-30dfdfeb9df5/347abc5f-3708-4979-a52d-d9fb8570b282/Official-PXU-Climate-Action-Resolution.pdf?language=en)\n\n“School districts are a major player in waste production, air pollution, and greenhouse gas emissions.”\n\n“PXU is committed to performing a self-audit and report on the current standing of their environmental impact… Using this data, PXU will form an internal Task Force.”\n\n“Efforts will be made to transportation within PXU more resilient through a commitment to transition PXU vehicles to more energy-efficient and less air-polluting vehicles, with a preference for zero-emission vehicles when possible.”\n\n“PXU will incorporate grade-appropriate educational curricula in relevant classrooms and programs that equip students with sustainability knowledge applicable to tackling environmental challenges.”\n\n- [Resolution Affirming Core Values, Equity, and the Dignity of All Students and Staff](https://restoration-news.com/getContentAsset/667cbc68-0404-4e5a-86ab-23931363b4d4/347abc5f-3708-4979-a52d-d9fb8570b282/PXU-Governing-Board-Resolution-Affirming-Core-Values-Equity-and-the-Dignity-of-All-Students-and-Staff20.pdf?language=en)\n\nThe resolution states the district “continues efforts to identify and remove systemic barriers” and commits to “inclusive decision-making that reflects the district’s diversity.”\n\n- [Proclamation Declaring the First Friday in June to be National Gun Violence Awareness Day](https://restoration-news.com/getContentAsset/043532dd-62cb-41ed-af65-2cb407675b8f/347abc5f-3708-4979-a52d-d9fb8570b282/National-Gun-Violence-Awareness-Day-Proclamation.pdf?language=en)\n\n“We renew our commitment to reduce gun violence and pledge to do all we can to keep firearms out of the hands of people who should not have access to them and encourage responsible gun ownership to help keep our families and communities safe.”\n\nFormer School Board Member Jeremiah Cotas was [stopped](https://web.archive.org/web/20260911160310/https://azfreenews.com/2026/02/phoenix-union-high-school-districts-lone-conservative-member-resigns/) from reading a prayer because he did not state the land acknowledgement.\n\n- Petition for removal began following attendance at a Christmas party after a local Turning Point USA conference.",
+      "images": [
+        {
+          "src": "/media/uploads/2026/11/arizona/phoenix-union-logo.svg",
+          "alt": "Phoenix Union High School District logo"
+        }
+      ],
+      "modified": "2026-11-11T00:00:00"
+    },
+    {
+      "id": 9032,
+      "title": "Francisco Pastor-Rivera",
+      "slug": "francisco-pastor-rivera",
+      "route": "/district-watch/arizona-schools/phoenix-union-high-school-district/francisco-pastor-rivera/",
+      "sourceUrl": "",
+      "parentId": 9030,
+      "childIds": [],
+      "kind": "profile",
+      "grade": null,
+      "description": "President and at-large member of the Phoenix Union High School District Governing Board.",
+      "body": "Former Intern at [Aliento](https://web.archive.org/web/20260911162019/https://alientoaz.org/)—a nonprofit which gives illegal aliens and others, including teachers, resources to avoid deportation and receive college education.\n\nFormer Intern for US House Assistant Democratic Leader James Clyburn\n\nLobbied “Arizona State Legislature in May 2021 to pass SCR 1044 that established voter Proposition 308\n\n- [Proposition 308](https://web.archive.org/web/20260911162431/https://www.azleg.gov/alispdfs/council/2022BallotMeasures/adopted%20analysis%20Proposition%20308%20SCR%201044%20-%202021.pdf) allowed select non-citizen students to receive state-funded financial aid and in-state tuition costs.\n\nOn his 2024 Ballotpedia [page](https://web.archive.org/web/20260911162726/https://ballotpedia.org/Francisco_Pastor-Rivera), he described his platform.\n\n- When asked about his goals, he stated; “Growing up as a young Chicano in Arizona, I have witnessed the challenges that students and families faced rooted in inequity, systemic barriers, and bigotry. I have seen the impact of discriminatory policies that denied opportunities to students. But rather than standing by, I chose a path of action, organizing advocacy efforts, and working alongside community members to fight for positive change. As a young educator, I understand that education is not about academics; it is about supporting the emotional, mental and social needs of the entire community. In every step that I have taken since my advocacy in high school, I have always aimed to have the values of equity, justice, and community.”\n\nFrancisco Pastor-Rivera [supported](https://web.archive.org/web/20260911160310/https://azfreenews.com/2026/02/phoenix-union-high-school-districts-lone-conservative-member-resigns/) the removal of the only Conservative board member.\n\n- Pastor-Rivera condemned Board Member Jeremiah Cota’s attendance of a Christmas party after a local Turning Point USA conference.\n\nHe was featured in multiple YouTube videos for students and parents who are illegal aliens for them to “know their rights regarding ICE.”\n\n![Video screenshot featuring Francisco Pastor-Rivera](/media/uploads/2026/11/arizona/francisco-pastor-rivera-video-1.png)\n\n![Second video screenshot featuring Francisco Pastor-Rivera](/media/uploads/2026/11/arizona/francisco-pastor-rivera-video-2.png)\n\nAs a candidate, he [stated](https://restoration-news.com/getContentAsset/e35e58f6-aa0b-4499-9d49-4e0e24835bc4/347abc5f-3708-4979-a52d-d9fb8570b282/Screenshot-2026-09-11-130914.png?language=en) “it is… time for all of us to recognize that the spirit of Pride is inherently tied to who we are as Arizonians.\n\nHe also [posted](https://restoration-news.com/getContentAsset/a4b020c7-766d-417f-ab4d-131af220a4a9/347abc5f-3708-4979-a52d-d9fb8570b282/Screenshot-2026-09-11-131223.png?language=en); “we must cultivate safe spaces for all students. Diversity of all backgrounds is our greatest collective power”\n\nPastor-Rivera was [endorsed](https://web.archive.org/web/20260911185201/https://bluevoterguide.org/endorser-org/AZ_Poder/AZ/5541) by AZ Poder, a socialist organization which demands police-free schools and are against ICE’s deportation of criminal aliens.",
+      "images": [
+        {
+          "src": "/media/uploads/2026/11/arizona/francisco-pastor-rivera.jpeg",
+          "alt": "Francisco Pastor-Rivera"
+        }
+      ],
+      "modified": "2026-11-11T00:00:00"
+    },
+    {
+      "id": 9033,
+      "title": "Lizette Mier",
+      "slug": "lizette-mier",
+      "route": "/district-watch/arizona-schools/phoenix-union-high-school-district/lizette-mier/",
+      "sourceUrl": "",
+      "parentId": 9030,
+      "childIds": [],
+      "kind": "profile",
+      "grade": null,
+      "description": "Clerk and Ward 5 member of the Phoenix Union High School District Governing Board.",
+      "body": "Mier [voted](https://web.archive.org/web/20260911193201/https://www.kjzz.org/education/2025-04-25/phoenix-union-voted-against-funding-for-police-in-schools-horne-is-asking-district-to-reconsider) against state funding for school resource officers (SROs). She said, “So given the current administration and knowing how many vulnerable students we have in our district I can’t in good conscience vote for SROs.”\n\nMier was [endorsed](https://web.archive.org/web/20260911185201/https://bluevoterguide.org/endorser-org/AZ_Poder/AZ/5541) by AZ Poder, a socialist organization which demands police-free schools and are against ICE’s deportation of criminal aliens.\n\nIn an [advertisement](https://restoration-news.com/getContentAsset/56b20ecb-9655-4eb0-9785-a275277a2361/347abc5f-3708-4979-a52d-d9fb8570b282/Screenshot-2026-09-11-145649.png?language=en) posted by AZ Poder, Mier campaigns on “ending the criminalization of students.”\n\nMier was also [endorsed](https://web.archive.org/web/20260911192116/https://bluevoterguide.org/district/AZ/Phoenix_Union_High_School_District_Governing_Board_Ward_5/17058/125) by Arizona List, a women’s group with the purpose of electing pro-abortion Democratic women.",
+      "images": [
+        {
+          "src": "/media/uploads/2026/11/arizona/lizette-mier.jpeg",
+          "alt": "Lizette Mier"
+        }
+      ],
+      "modified": "2026-11-11T00:00:00"
+    },
+    {
+      "id": 9034,
+      "title": "Ceyshe Napa",
+      "slug": "ceyshe-napa",
+      "route": "/district-watch/arizona-schools/phoenix-union-high-school-district/ceyshe-napa/",
+      "sourceUrl": "",
+      "parentId": 9030,
+      "childIds": [],
+      "kind": "profile",
+      "grade": null,
+      "description": "Ward 4 member of the Phoenix Union High School District Governing Board.",
+      "body": "Napa was [endorsed](https://restoration-news.com/getContentAsset/2ce83a75-2f83-4d3c-a4f6-30961ae6e191/347abc5f-3708-4979-a52d-d9fb8570b282/Screenshot-2026-09-11-170345.png?language=en) by AZ Poder, a socialist organization which demands police-free schools and are against ICE’s deportation of criminal aliens.\n\n- In her endorsement post, Napa stated the endorsement was “an important moment for [her], considering… the shared values I hold with AZ Poder as a candidate and as an individual to dismantle systems of oppression to build futures rooted in liberation.”\n\n- Napa was endorsed by Arizona List, a women’s group with the purpose of electing pro-abortion Democratic women.\n* In her endorsement post, she [stated](https://restoration-news.com/getContentAsset/4ff954b5-7aa4-41e5-9683-d9f251ef53d2/347abc5f-3708-4979-a52d-d9fb8570b282/Screenshot-2026-09-11-165420.png?language=en): “I am committed to fighting for reproductive freedom and comprehensive sex ed.”",
+      "images": [
+        {
+          "src": "/media/uploads/2026/11/arizona/ceyshe-napa.jpeg",
+          "alt": "Ceyshe Napa"
+        }
+      ],
+      "modified": "2026-11-11T00:00:00"
+    },
+    {
+      "id": 9035,
+      "title": "Thea Andrade",
+      "slug": "thea-andrade",
+      "route": "/district-watch/arizona-schools/phoenix-union-high-school-district/thea-andrade/",
+      "sourceUrl": "",
+      "parentId": 9030,
+      "childIds": [],
+      "kind": "profile",
+      "grade": null,
+      "description": "Superintendent of Phoenix Union High School District.",
+      "body": "PXU Superintendent\n\nAndrade sent parents a [letter](https://restoration-news.com/getContentAsset/775692c0-7815-4881-a290-a573c7c9756a/347abc5f-3708-4979-a52d-d9fb8570b282/parent-communication.pdf?language=en) declaring the school district’s campuses as “safe zones for all students… regardless of citizenship status.”",
+      "images": [
+        {
+          "src": "/media/uploads/2026/11/arizona/thea-andrade.jpeg",
+          "alt": "Thea Andrade"
+        }
+      ],
+      "modified": "2026-11-11T00:00:00"
+    }
+  ]
+}
