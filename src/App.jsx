@@ -28,6 +28,7 @@ const navItems = [
   ["District Watch", "/district-watch/"],
 ];
 const headerNavItems = navItems.filter(([, href]) => href !== "/grading-system/");
+const NAEP_SNAPSHOTS_URL = "https://nces.ed.gov/nationsreportcard/snapshots/";
 
 const districtWatchStates = [
   { name: "Arizona", code: "AZ", hubRoute: "/district-watch/arizona-schools/", sourceRoute: "/district-watch/arizona-schools/", gradeRoute: "/arizona/", image: "/media/uploads/2026/11/arizona/arizona-state-outline.svg" },
@@ -192,7 +193,7 @@ function Header() {
       <header className="site-header">
         <div className="shell nav-shell">
           <Link className="wordmark" to="/" aria-label="Restoration of Education home">
-            <img src="/media/brand/restoring-edu-logo-navy.png?v=20261111" alt="" />
+            <img className="wordmark-logo" src="/media/brand/restoration-of-education-dark.png" alt="" />
           </Link>
           <nav className="desktop-nav" aria-label="Primary navigation">
             {headerNavItems.map(([label, href]) => (
@@ -231,7 +232,7 @@ function SearchDialog({ onClose }) {
   }, [query]);
 
   return (
-    <div className="search-backdrop" role="dialog" aria-modal="true" aria-label="Search Restoring Education">
+    <div className="search-backdrop" role="dialog" aria-modal="true" aria-label="Search Restoration of Education">
       <div className="search-dialog">
         <div className="search-title">
           <h2>Search the research</h2>
@@ -260,8 +261,8 @@ function Footer() {
     <footer className="site-footer">
       <div className="shell footer-grid">
         <div>
-          <Link className="wordmark footer-mark" to="/" aria-label="Restoring Education home">
-            <img src="/media/brand/restoring-edu-logo-white.png?v=20261111" alt="" />
+          <Link className="wordmark footer-mark" to="/" aria-label="Restoration of Education home">
+            <img className="wordmark-logo" src="/media/brand/restoration-of-education-light.png" alt="" />
           </Link>
           <p>{preventOrphan("Research that helps parents understand education choices, state policy, and local school leadership.")}</p>
         </div>
@@ -379,19 +380,20 @@ function HomePage() {
         </div>
         <div className="hero-panels reveal-late" aria-label="Education research highlights">
           <Link className="hero-panel hero-panel-main" to="/grading-system/">
-            <img src="/media/generated/design-1-education-hero.png" alt="Parents and students reviewing education materials together" />
-            <span>Education Freedom<br />State Scores</span>
+            <img className="hero-panel-image" src="/media/generated/education-freedom-scores-panel.jpg" alt="The Constitution beside a lined paper marked with letter grades" />
+              <span>Education Freedom<br /> State Scores</span>
             <p className="hero-panel-excerpt">{preventOrphan("See how each state measures up on school choice, student funding, and homeschooling freedom.")}</p>
             <em>{preventOrphan("Learn more")} <ArrowRight size={16} weight="bold" /></em>
           </Link>
           <Link className="hero-panel hero-panel-side" to="/district-watch/">
-            <img src="/media/uploads/2025/05/Restoring-Edu-Classroom.png" alt="An apple and books in a classroom" />
+            <img className="hero-panel-image" src="/media/generated/district-watch-panel.jpg" alt="A public school building viewed through a magnifying glass" />
             <span>District<br />Watch</span>
             <p className="hero-panel-excerpt">{preventOrphan("Explore research on the school board members and leaders shaping policies in local classrooms.")}</p>
             <em>{preventOrphan("Learn more")} <ArrowRight size={16} weight="bold" /></em>
           </Link>
-          <Link className="hero-panel hero-panel-side" to="/news/">
-            <img src="/media/uploads/2025/09/BBall-Court.jpg" alt="An urban basketball court" />
+          <Link className="hero-panel hero-panel-side hero-panel-latest" to="/news/">
+            <img className="hero-panel-image" src="/media/generated/latest-news-panel.jpg" alt="A newspaper and school materials arranged on a newsroom desk" />
+            <div className="hero-panel-brand-lockup" aria-hidden="true"><img src="/media/brand/restoration-news-roa-logo.png" alt="" /></div>
             <span>Latest<br />News</span>
             <p className="hero-panel-excerpt">{preventOrphan("Read the latest reporting and analysis about education freedom across America.")}</p>
             <em>{preventOrphan("Learn more")} <ArrowRight size={16} weight="bold" /></em>
@@ -444,6 +446,16 @@ function HomePage() {
         </div>
       </section>
 
+      <section className="project-credit section-space shell" aria-labelledby="project-credit-title">
+        <div>
+          <span className="eyebrow">A project of Restoration News</span>
+          <h2 id="project-credit-title">Restoration of Education is a project of Restoration News.</h2>
+          <p>{preventOrphan("Restoration News delivers original reporting and analysis on education, government, and the issues shaping American communities.")}</p>
+          <a className="primary-button" href="https://restoration-news.com/" target="_blank" rel="noreferrer">{preventOrphan("Visit Restoration News")} <ArrowRight size={18} /></a>
+        </div>
+        <img src="/media/brand/restoration-news-light-background.png" alt="Restoration News" />
+      </section>
+
       <section className="news-section section-space shell">
         <div className="section-heading compact-heading">
           <h2>The latest in education</h2>
@@ -487,6 +499,19 @@ function MarkdownBody({ page, stripFirstHeading = true, stripFirstImage = false 
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={{
+          h1: ({ children }) => {
+            const id = headingId(children);
+            if (page.kind === "state" && id === "click-for-details-about-how-your-state-or-district-scored") {
+              return (
+                <h2 className="naep-details-heading">
+                  <a href={NAEP_SNAPSHOTS_URL} target="_blank" rel="noreferrer">
+                    <span>{children}</span><ArrowRight size={22} weight="bold" />
+                  </a>
+                </h2>
+              );
+            }
+            return <h1 id={id}>{children}</h1>;
+          },
           h2: ({ children }) => <h2 id={headingId(children)}>{children}</h2>,
           h3: ({ children }) => <h3 id={headingId(children)}>{children}</h3>,
           a: ({ href, children }) => internalHref(href)
@@ -524,7 +549,7 @@ function StatePage({ page }) {
           <strong>On this page</strong>
           <a href="#education-options">Education options</a>
           <a href="#homeschooling-laws">Homeschooling laws</a>
-          <span>NAEP performance</span>
+          <a href={NAEP_SNAPSHOTS_URL} target="_blank" rel="noreferrer">NAEP performance</a>
           <Link to="/grading-system/">Grading methodology</Link>
         </aside>
       </main>
@@ -564,7 +589,7 @@ function DirectoryPage({ page }) {
                 return (
                   <Link key={district.id} to={district.route} className="directory-card">
                     {district.images[0] ? <img src={district.images[0].src} alt="" /> : <div className="directory-placeholder"><Buildings size={42} /></div>}
-                    <div><h3>{district.title}</h3><p>{preventOrphan(`${districtPeople.length} people${districtPolicies.length ? `, ${districtPolicies.length} policy page${districtPolicies.length === 1 ? "" : "s"}` : ""}`)}</p><span>{preventOrphan("Open district")} <ArrowRight size={17} /></span></div>
+                    <div><h3>{district.title}</h3><p>{preventOrphan(`${districtPeople.length} ${districtPeople.length === 1 ? "person" : "people"}${districtPolicies.length ? `, ${districtPolicies.length} policy page${districtPolicies.length === 1 ? "" : "s"}` : ""}`)}</p><span>{preventOrphan("Open district")} <ArrowRight size={17} /></span></div>
                   </Link>
                 );
               })}

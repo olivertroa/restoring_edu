@@ -13,7 +13,7 @@ PROJECT = Path(__file__).resolve().parents[1]
 ARCHIVE = PROJECT.parent / "content-export"
 OUT = PROJECT / "src/data/site-content.json"
 PAGE_OUT = PROJECT / "public/content"
-CUSTOM_CONTENT = PROJECT / "content/arizona-district-watch.json"
+CUSTOM_CONTENT_FILES = tuple(sorted((PROJECT / "content").glob("*-district-watch*.json")))
 DISTRICT_HUB_ROUTES = {
     "/district-watch/arizona-schools/",
     "/district-watch/georgia-schools/",
@@ -25,9 +25,11 @@ DISTRICT_HUB_ROUTES = {
 
 
 def merge_custom_pages(pages: list[dict]) -> list[dict]:
-    if not CUSTOM_CONTENT.exists():
+    custom_pages = []
+    for content_file in CUSTOM_CONTENT_FILES:
+        custom_pages.extend(json.loads(content_file.read_text()).get("pages", []))
+    if not custom_pages:
         return pages
-    custom_pages = json.loads(CUSTOM_CONTENT.read_text()).get("pages", [])
     custom_ids = {entry["id"] for entry in custom_pages}
     custom_routes = {entry["route"] for entry in custom_pages}
     merged = [entry for entry in pages if entry["id"] not in custom_ids and entry["route"] not in custom_routes]
@@ -35,6 +37,20 @@ def merge_custom_pages(pages: list[dict]) -> list[dict]:
     for entry in custom_pages:
         (PAGE_OUT / f"{entry['id']}.json").write_text(json.dumps(entry, ensure_ascii=False))
         merged.append({key: value for key, value in entry.items() if key != "body"})
+
+    pages_by_id = {entry["id"]: entry for entry in merged}
+    for entry in custom_pages:
+        parent = pages_by_id.get(entry.get("parentId"))
+        if not parent or entry["id"] in parent.get("childIds", []):
+            continue
+        parent.setdefault("childIds", []).append(entry["id"])
+        parent_path = PAGE_OUT / f"{parent['id']}.json"
+        if parent_path.exists():
+            full_parent = json.loads(parent_path.read_text())
+            full_parent.setdefault("childIds", [])
+            if entry["id"] not in full_parent["childIds"]:
+                full_parent["childIds"].append(entry["id"])
+                parent_path.write_text(json.dumps(full_parent, ensure_ascii=False))
     return merged
 
 
